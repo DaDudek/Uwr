@@ -1,0 +1,21 @@
+module multiplex(input a0, a1, s, output o);
+  assign o = (a0 & !s) | (a1 & s);
+endmodule
+
+module fourbitmultiplex(input a0, a1, a2, a3, s0, s1, output o);
+  logic high, low;
+  multiplex MUXhigh(a0,a1,s0,high);
+  multiplex MUXlow (a2,a3, s0, low);
+  multiplex finalMUX (high,low,s1,o);
+endmodule
+
+module toplevel(input [3:0]i,
+                input [0:0] l, r,
+                output [3:0] o);
+  
+  fourbitmultiplex MUX0(i[3],i[2],1'b 0, i[3],l,r,o[3]);
+  fourbitmultiplex MUX1(i[2],i[1],i[3],i[2],l,r,o[2]);
+  fourbitmultiplex MUX2(i[1],i[0],i[2],i[1],l,r,o[1]);
+  fourbitmultiplex MUX3(i[0],1'b 0, i[1], i[0],l,r,o[0]);
+  
+endmodule

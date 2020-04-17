@@ -1,0 +1,20 @@
+module toplevev(input [3:0] i, output [6:0] o);
+  assign x = i[3];
+  assign y = i[2];
+  assign z = i[1];
+  assign w = i[0];
+  assign a = x || (y && w) || z || (!w && !y);
+  assign b = x || !y || (z && w) || (!z && !w);
+  assign c = x || y || !z || (w && z);
+  assign d = x || (z && !w) || (!z && w && y) || (!x && !y && z) || (!y && !w && !x);
+  assign e = (z && !w) || (!y && !w);
+  assign f = x || (!z && !w) || (y && !z) || (y && !w && z);
+  assign g = x || (y&& !z) || (z && !w) || (z&& !x && !y);
+  assign o[6] = a;
+  assign o[5] = b;
+  assign o[4] = c;
+  assign o[3] = d;
+  assign o[2] = e;
+  assign o[1] = f;
+  assign o[0] = g;
+endmodule

@@ -1,0 +1,49 @@
+module notch(input [7:0]a,
+             input [7:0]b,
+             input [3:0]n,
+             output [7:0] o);
+  logic [15:0]connection;
+  assign connection = {a,b};
+  assign o = connection[n+7:n];
+  
+endmodule
+
+module ROR(input [7:0] a,
+           input [3:0] n,
+           output [7:0] o);
+  
+  notch n1(a, a, n, o);
+endmodule  
+
+module ROL(input [7:0] a,
+           input [3:0] n,
+           output [7:0] o);
+  notch n1(a, a, (8-n), o);
+endmodule  
+
+module arithmeticright(input [7:0] i,
+                       input [3:0] n,
+                       output [7:0] o);
+  logic [7:0] tmp;
+  assign tmp = i[7]? {8{1'b 1}}: {8{1'b 0}};
+  notch n1(tmp,i,n,o);
+endmodule
+
+module funnelshifter(input [7:0] i,
+                     input [3:0] n,
+                     input [0:0] ar,lr,rot,
+                     output [7:0] o);
+  logic [7:0] arthRval;
+  logic [7:0] ROLval;
+  logic [7:0] RORval;
+  ROL rol(i,n,ROLval);
+  ROR ror(i,n,RORval);
+  arithmeticright arith(i,n,arthRval);
+    assign o = rot? 
+      (lr? ROLval: RORval): 
+      (ar? 
+        (lr? (i <<< n) : arthRval) :
+        (lr? (i <<n) : (i >> n)));
+  
+endmodule
+

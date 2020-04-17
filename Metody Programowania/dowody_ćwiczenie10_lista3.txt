@@ -1,0 +1,106 @@
+WSPÓŁPRACA : DAWID DUDEK, JAKUB PRZYDATEK, PAWEŁ SIKORA, MICHAŁ SOBECKI
+
+Dowód 1
+= oznacza równoważność, null reprezentuje listę pustą, L reprezentuję lewą stronę lematu, P reprezentuję prawą stronę lematu (rozdziela je =)
+
+definicja append:
+(define (append xs ys)
+  (if (empty? xs)
+      ys
+      (cons (car xs) (append (cdr xs) ys))))
+
+definicja map:
+(define (map f xs)
+  (if (empty? xs)
+      '()
+      (cons (f (car xs)) (map f (cdr xs)))))
+
+Chcę udowodnić poniższy lemat:
+(map f (append xs ys)) = (append (map f xs) (map f ys)) dla pewnej jednoargumentowej procedury p
+
+Dowód przeprowadzę za pomocą indukcji strukturalnej względem xs
+
+1 Podstawa Indukcji dla xs = null
+
+Otrzymujemy wtedy:
+
+L = (map f (append xs ys)) = (z zał ) (map f (append null ys)) = (z def append) (map f ys)
+
+P= (append (map f xs) (map f ys)) = (z zał) (append (map f null) (map f ys)) = (z def map) (append null (map f ys)) = (z def append oraz tego ze map zwraca liste) (map f ys)
+
+Zatem dla xs = null L=P czyli zachodzi podstawa indukcji
+
+2 Krok Indukcyjny - weźmy dowolne x oraz xs i załóżmy że [(map f (append xs ys)) = (append (map f xs) (map f ys))] oraz (cons x xs) =! null
+
+Pokażemy że (map f (append (cons x xs) ys)) = (append (map f (cons x xs)) (map f ys))
+
+L = (map f (append (cons x xs) ys )) = (z def append) (map f [cons (car x xs) (append (cdr (cons x xs)) ys) )) = (z def car i cdr) (map f (cons x (append xs ys)) )
+= (z def map) (cons (f x) (map f (append xs ys)))
+
+P = (append (map f (cons x xs)) ( map f ys)) = (z def map) (append [(cons (f x) (map f xs))] (map f ys)) = (z def append) (cons (f x) (append (map f xs) (map f ys))) = (z zal) (cons (f x) (map f (append xs ys)))
+
+Czyli ponownie L=P zatem na mocy indukcji strukturalnej lemat prawdziwy co kończy dowód.
+
+
+
+
+
+Dowód 2
+= oznacza równoważność, null reprezentuje listę pustą, L reprezentuję lewą stronę lematu, P reprezentuję prawą stronę lematu (rozdziela je =)
+
+definicja append:
+(define (append xs ys)
+  (if (empty? xs)
+      ys
+      (cons (car xs) (append (cdr xs) ys))))
+
+definicja filter:
+(define (filter p? xs)
+  (if (empty? xs)
+      '()
+      (if (p? (car xs))
+          (cons (car xs) (filter p? (cdr xs)))
+          (filter p? (cdr xs)))))
+
+
+Chce udowodnić następujący lemat:
+
+(filter p? (append xs ys)) = (append (filter p? xs) (filter p? ys))
+
+Użyję do tego indukcji strukturalnej względem xs
+
+Podstawa indukcji dla xs = null
+
+L = (filter p? (append xs ys)) =( z zal)  (filter p? (append null ys)) = (z def append) = (filter p? ys)
+P = (append (filter p? xs) (filter p? ys)) = (z zal) = (append (filter p? null) (filter p? ys)) = (z def filter) = (append null (filter p? ys)) =
+(z def append oraz tego ze filter zwraca liste) (filter p? ys)
+
+Czyli dla xs= null L = P
+
+Krok Indukcyjny: weźmy dowolne x, xs i załóżme że (filter p? (append xs ys)) = (append (filter p? xs) (filter p? ys)) oraz (cons x xs)!= null;
+
+Chcemy pokazać, że:
+(filter p? (append (cons x xs) ys)) = (append (filter p? (cons x xs)) (filter p? ys))
+
+P = (append (filter p? (cons x xs)) (filter p? ys))
+
+Rozważmy przypadki 
+
+1) (p? x) = #t 
+
+
+P = (append [filter p? (cons x xs)] [filter p? ys]) = (z def filter oraz z założenia (filter p? x) = #t) (append [cons x (filter p? xs)] (filter p? ys)) = (z def append) (cons x (append (filter p? xs)(filter p? ys)) = 
+(z zal przy kroku) (cons x (filter p? (append xs ys)))
+
+L = (filter p? (append (cons x xs) ys)) = (z def append) (filter p? [cons x (append xs ys) ] ) (z założenia (filter p? x) = #t) = (cons x [filter p? (append xs ys)])
+
+Zatem P=L w tym przypadku
+
+2) (p? x) = #f
+
+P = (append (filter p? (cons x xs)) (filter p? ys)) = (z def filter oraz z założenia (filter p? x) = #f) (append (filter p? xs) (filter p? ys)) = (z zal przy kroku) = (filter p? (append xs ys))
+L = (filter p? (append (cons x xs) ys)) = (z def append) (filter p? [cons x (append xs ys) ] ) (z założenia (filter p? x) = #f) = (filter p? (append xs ys))
+
+więc w tym przypadku P = L
+
+W obu przypadku P=L zatem krok indukcyjny również pokazany więc na mocy zasady indukcji lemat prawdziwy co kończy dowód
