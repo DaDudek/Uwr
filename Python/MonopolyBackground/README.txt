@@ -1,0 +1,1 @@
+Projekt nie jest jeszcze dokończony jednakże jego aktualny stan pozwala na prostą grę przez terminal. Projekt jest rozwijany i planuję go skończyć do końca semestru.
