@@ -1,0 +1,1 @@
+Powyższe materiały służą jako podgląd umiejętności i swoiste archwium. Nie namawiam oraz nie zachęcam nikogo do kopiowania tych rozwiązań, szczególnie studentów instytutu.
