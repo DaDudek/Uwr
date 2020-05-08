@@ -1,0 +1,27 @@
+// Write your modules here!
+module Euklides(input [15:0] n,
+                input [15:0] m,
+               input init,
+               input clk,
+               output fin,
+               output[15:0] o);
+  logic [15:0] accn;
+  logic [15:0] accm;
+  logic [15:0] new_m;
+  logic [15:0] new_n;
+  logic [15:0] switch;
+  logic [15:0] sub;
+  assign sub = accn - accm;
+  assign new_m = init? ( (m>n)? n : m) : ( (sub < accm)? sub : accm) ; 
+  assign new_n = init? ( (m > n)? m : n) : ( (sub < accm)? accm : sub); 
+  assign fin = !(accm > 0 );
+  assign o = accn;
+  
+  always_ff @(posedge clk)
+    accn <= new_n;
+  
+  always_ff @(posedge clk)
+    accm <= new_m;
+  
+  
+endmodule
