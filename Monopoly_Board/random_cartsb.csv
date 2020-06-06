@@ -1,0 +1,33 @@
+"name,""type"",""value"""
+Szansa0,get_money,500,you win 500k
+Szansa1,lose_money,150,you lost 150k
+Szansa2,go_to_place_by_kind,transport,go to the nearest transport spot
+Szansa3,go_back_by_index,3,go back for three cells
+Szansa4,go_to_place_by_index,11,go to Istambu³
+Szansa5,go_to_place_by_index,0,go to start cell
+Szansa6,pay_for_buildings,250,pay 250k for each house and 1kk for each hotel
+Szansa7,go_to_place_by_index,5,go to train station
+"Szansa8,get_out_of_prizon,1,you get ""get out of jail"" cart"
+Szansa9,go_to_prison,1,you go to jail
+Szansa10,go_to_place_by_kind,power_station,go to nearest powet_station
+Szansa11,pay_other_players,500,you paid 500k for all other players
+Szansa12,go_to_place_by_index,39,go to montreal
+Szansa13,go_to_place_by_kind,transport,go to the nearest transport spot
+Szansa14,go_to_place_by_index,14,go to Toronto
+Szansa15,get_money,1500,you get 1.5kk
+"Kasa0,get_out_of_prizon,1,you get ""get out of jail"" cart"
+Kasa1,lose_money,500,you need to paid 500k
+Kasa2,lose_money,1000, you need to paid 1kk
+Kasa3,go_to_prison,1,you go to prison
+Kasa4,get_from_players,100,each player paid you 100k
+Kasa5,go_to_place_by_index,0, go to start cell
+Kasa6,get_money,1000,you get 1kk
+Kasa7,lose_money,200, you must paid 200k
+Kasa8,get_money,1000, you get 1kk
+Kasa9,lose_money,500, you need to paid 500k
+Kasa10,get_money,100, you get 100k
+Kasa11,get_money,500,you get 500k
+Kasa12,get_money,1000,you  get 1kk
+Kasa13,get_money,2000, you get 2kk
+Kasa14,pay_for_buildings,400, pay 400k for each house and 1.6kk for each hotel
+Kasa15,get_money,250, you get 250k
