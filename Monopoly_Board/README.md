@@ -4,15 +4,15 @@ To start this game you need install pygame and after this run a game_loop.py fil
 
 # Rules of the game:
 * every turn player must roll the dice
-* if the player has two identical dice values, he have additional turn
-* if player has two identical dice values three turn in row he go to prison
-* if player go to prison, he have three option - can wait two turn, paid 500k or use "get out of jail" cart
-* player can buy cell when stand on free cell
-* player can buy house/hotel when have all cart from the same section
-* if in any cell from section player have house/hotel he can't sell any cell from this section
-* when some player stand on other player cell must paid him
-* if cell owner is in prison, player who stand in his cell don't pay him
-* games end when only one player is not bancrupt.
+* if player rolls two identical dices, they get an additional turn
+* if player gets two identical dices three turns in a row they go to prison
+* if player goes to prison, they have three options - wait two turns, pay 500k or use "get out of jail" card
+* player can buy cell when they stand on free cell
+* player can buy house/hotel when they have all cards from the same section
+* if player has house/hotel on a cell, he can't sell any cells from this section
+* when some player stands on other player’s cell, they must pay them
+* if cell owner is in prison, player who stand on his cell doesn't need to pay them
+* games end when there’s only one player not bancrupt
 
 # game screenshot
 ![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screenshot/free_cell.png)
