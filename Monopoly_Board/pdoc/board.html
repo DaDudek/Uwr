@@ -42,10 +42,10 @@ class Board:
             :param player_number:  how many players play on this game (basic 4)
 
             board: (dict) this represent board with cells - key is a cell number,
-                board[cell][0] is always cell cart, board[cell][x], x&gt;0 -&gt; player who stand on the cell
+                board[cell][0] is always cell card, board[cell][x], x&gt;0 -&gt; player who stand on the cell
             id_type_cells: (dict) key is a kind of cell (cities, power_stations etc)
                                         value is list of number of that kind cells
-            hidden: (list) this is list of all hidden cart
+            hidden: (list) this is list of all hidden card
                             (in this version is only one event but it is prepare for future when will be more events)
             players_queue: (list (of players)) this represent players_queue, is used to control players order
             sector: (dict) this represent countries, key is country kind (yellow, red etc),
@@ -66,17 +66,17 @@ class Board:
 
         :return: void -&gt; only change object
         &#34;&#34;&#34;
-        banker = Banker(open(&#34;monopoly_carts.csv&#34;))
-        banker.make_all_carts()
+        banker = Banker(open(&#34;monopoly_cards.csv&#34;))
+        banker.make_all_cards()
         for i in range(40):
-            self.board[i] = [banker.carts[i]]
+            self.board[i] = [banker.cards[i]]
         self.id_type_cells = banker.id
-        self.hidden = banker.hidden_carts
+        self.hidden = banker.hidden_cards
         self.sector = banker.sector
 
     def check_transport_cells(self):
         &#34;&#34;&#34;
-        This function is used to check how many transport carts player have
+        This function is used to check how many transport cards player have
 
         :param players_queue: (list) list of player thats play the game
 
@@ -111,10 +111,10 @@ The constructor for ComplexNumber class.</p>
 <pre><code>:param player_number:  how many players play on this game (basic 4)
 
 board: (dict) this represent board with cells - key is a cell number,
-    board[cell][0] is always cell cart, board[cell][x], x&gt;0 -&gt; player who stand on the cell
+    board[cell][0] is always cell card, board[cell][x], x&gt;0 -&gt; player who stand on the cell
 id_type_cells: (dict) key is a kind of cell (cities, power_stations etc)
                             value is list of number of that kind cells
-hidden: (list) this is list of all hidden cart
+hidden: (list) this is list of all hidden card
                 (in this version is only one event but it is prepare for future when will be more events)
 players_queue: (list (of players)) this represent players_queue, is used to control players order
 sector: (dict) this represent countries, key is country kind (yellow, red etc),
@@ -140,10 +140,10 @@ actual_player: (player) represent current player
             :param player_number:  how many players play on this game (basic 4)
 
             board: (dict) this represent board with cells - key is a cell number,
-                board[cell][0] is always cell cart, board[cell][x], x&gt;0 -&gt; player who stand on the cell
+                board[cell][0] is always cell card, board[cell][x], x&gt;0 -&gt; player who stand on the cell
             id_type_cells: (dict) key is a kind of cell (cities, power_stations etc)
                                         value is list of number of that kind cells
-            hidden: (list) this is list of all hidden cart
+            hidden: (list) this is list of all hidden card
                             (in this version is only one event but it is prepare for future when will be more events)
             players_queue: (list (of players)) this represent players_queue, is used to control players order
             sector: (dict) this represent countries, key is country kind (yellow, red etc),
@@ -164,17 +164,17 @@ actual_player: (player) represent current player
 
         :return: void -&gt; only change object
         &#34;&#34;&#34;
-        banker = Banker(open(&#34;monopoly_carts.csv&#34;))
-        banker.make_all_carts()
+        banker = Banker(open(&#34;monopoly_cards.csv&#34;))
+        banker.make_all_cards()
         for i in range(40):
-            self.board[i] = [banker.carts[i]]
+            self.board[i] = [banker.cards[i]]
         self.id_type_cells = banker.id
-        self.hidden = banker.hidden_carts
+        self.hidden = banker.hidden_cards
         self.sector = banker.sector
 
     def check_transport_cells(self):
         &#34;&#34;&#34;
-        This function is used to check how many transport carts player have
+        This function is used to check how many transport cards player have
 
         :param players_queue: (list) list of player thats play the game
 
@@ -193,7 +193,7 @@ actual_player: (player) represent current player
 <span>def <span class="ident">check_transport_cells</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to check how many transport carts player have</p>
+<div class="desc"><p>This function is used to check how many transport cards player have</p>
 <p>:param players_queue: (list) list of player thats play the game</p>
 <p>:return: void -&gt; only change object</p></div>
 <details class="source">
@@ -202,7 +202,7 @@ actual_player: (player) represent current player
 </summary>
 <pre><code class="python">def check_transport_cells(self):
     &#34;&#34;&#34;
-    This function is used to check how many transport carts player have
+    This function is used to check how many transport cards player have
 
     :param players_queue: (list) list of player thats play the game
 
@@ -233,12 +233,12 @@ actual_player: (player) represent current player
 
     :return: void -&gt; only change object
     &#34;&#34;&#34;
-    banker = Banker(open(&#34;monopoly_carts.csv&#34;))
-    banker.make_all_carts()
+    banker = Banker(open(&#34;monopoly_cards.csv&#34;))
+    banker.make_all_cards()
     for i in range(40):
-        self.board[i] = [banker.carts[i]]
+        self.board[i] = [banker.cards[i]]
     self.id_type_cells = banker.id
-    self.hidden = banker.hidden_carts
+    self.hidden = banker.hidden_cards
     self.sector = banker.sector</code></pre>
 </details>
 </dd>

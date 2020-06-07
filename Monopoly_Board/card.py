@@ -1,7 +1,7 @@
 from random import choice
 
 
-class Cart:
+class Card:
     """
         This is a class for represents Cell objects - all type of cells extends this class
 
@@ -29,7 +29,7 @@ class Cart:
         """
         The function to sell cell to bank, delete cell from player property and countries and give him money
 
-        :param cell: (Cart)
+        :param cell: (card)
 
         :return: void -> only change objects
         """
@@ -95,7 +95,7 @@ class Cart:
         :param board: (board) Hidden part of game board - logic part of apk
         :return: (int / String) 7 - if player stand on 0, 10, 20 (nothing happend then)
                  4 - if player stand on go to prison cell
-                 hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
+                 hidden card info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
         """
         if player.coordinate in board.id_type_cells["hidden"]:
             return self.stand_in_hidden_cell(player, board)
@@ -131,9 +131,9 @@ class Cart:
             :return: (int) 7 - if player stand on 0, 10, 20 (nothing happend then)
                         4 - if player stand on go to prison cell
                 """
-        hidden_cart = choice(board.hidden)
-        if hidden_cart.cart_type == "get_money":
-            player.money += hidden_cart.value
-        # elif hidden_cart.cart_type == "get_out_of_prison":
+        hidden_card = choice(board.hidden)
+        if hidden_card.card_type == "get_money":
+            player.money += hidden_card.value
+        # elif hidden_card.card_type == "get_out_of_prison":
         #   player.out_of_prison += 1  for future
-        return hidden_cart.info
+        return hidden_card.info

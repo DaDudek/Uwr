@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>tax_cart API documentation</title>
+<title>hidden_card API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,49 +17,43 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>tax_cart</code></h1>
+<h1 class="title">Module <code>hidden_card</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from cart import Cart
+<pre><code class="python">from card import Card
 
 
-class TaxCart(Cart):
+class HiddenCard(Card):
     &#34;&#34;&#34;
-            This is a class for represents HiddenCart objects - cell number 2, 7, 17, 22, 33, 36
+        This is a class for represents Hiddencard objects - cell number 2, 7, 17, 22, 33, 36
 
-            This class extends Cart class
+        This class extends card class
 
-            Attributes:
-                coordinate, name: act the same as on Cart class
-                section (String): always &#34;pay&#34;, use to check for cart type
-                amount_of_tax: (int) how much player must paid
+        Attributes:
+            coordinate, name: act the same as on card class (coordinate -1 because what hidden card we roll is random)
+            card_type (String) : give information what event whe get from this card
+            value (String/int) : give information about how handle event from card_type (get money/lose money etc)
+            info (String) : Information about what we roll to display on screen for user
+    &#34;&#34;&#34;
+    def __init__(self, name, card_type, value, info):
         &#34;&#34;&#34;
-    def __init__(self, coordinate, name, section, amount_of_tax):
-        &#34;&#34;&#34;
 
-        :param coordinate: act the same as on Cart class (can be 2 or 38)
-        :param name: act the same as on Cart class
-        :param section: (String): always &#34;pay&#34;, use to check for cart type
-        :param amount_of_tax: (int) how much player must paid
+        :param name:  act the same as on card class
+        :param card_type: (String) : give information what event whe get from this card
+        :param value: (String/int) : give information about how handle event from card_type (get money/lose money etc)
+        :param info: (String) : Information about what we roll to display on screen for user
         &#34;&#34;&#34;
-        super().__init__(coordinate, name,)
-        self.section = section
-        self.amount_of_tax = amount_of_tax
+        super().__init__(-1, name)
+        self.card_type = card_type
+        self.value = value
+        self.info = info
 
-    def stand_in_cell(self, player, board):
-        &#34;&#34;&#34;
-        The function to give information about cell that player stand after roll
-
-        :param player: (player) player who stand on this cell
-        :param board: (board) Hidden part of game board - logic part of apk
-
-        :return: 2 - player stand on tax cell
-        &#34;&#34;&#34;
-        return 2</code></pre>
+    def __str__(self):
+        return self.info</code></pre>
 </details>
 </section>
 <section>
@@ -71,95 +65,62 @@ class TaxCart(Cart):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="tax_cart.TaxCart"><code class="flex name class">
-<span>class <span class="ident">TaxCart</span></span>
-<span>(</span><span>coordinate, name, section, amount_of_tax)</span>
+<dt id="hidden_card.HiddenCard"><code class="flex name class">
+<span>class <span class="ident">HiddenCard</span></span>
+<span>(</span><span>name, card_type, value, info)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This is a class for represents HiddenCart objects - cell number 2, 7, 17, 22, 33, 36</p>
-<p>This class extends Cart class</p>
+<div class="desc"><p>This is a class for represents Hiddencard objects - cell number 2, 7, 17, 22, 33, 36</p>
+<p>This class extends card class</p>
 <h2 id="attributes">Attributes</h2>
 <dl>
-<dt><strong><code>coordinate</code></strong>, <strong><code>name</code></strong> :&ensp;<code>act the same as on Cart class</code></dt>
+<dt><strong><code>coordinate</code></strong>, <strong><code>name</code></strong> :&ensp;<code>act the same as on card class (coordinate -1 because what hidden card we roll is random)</code></dt>
 <dd>&nbsp;</dd>
-<dt><strong><code>section</code></strong> :&ensp;<code>String</code></dt>
-<dd>always "pay", use to check for cart type</dd>
-<dt><strong><code>amount_of_tax</code></strong></dt>
-<dd>(int) how much player must paid</dd>
 </dl>
-<p>:param coordinate: act the same as on Cart class (can be 2 or 38)
-:param name: act the same as on Cart class
-:param section: (String): always "pay", use to check for cart type
-:param amount_of_tax: (int) how much player must paid</p></div>
+<p>card_type (String) : give information what event whe get from this card
+value (String/int) : give information about how handle event from card_type (get money/lose money etc)
+info (String) : Information about what we roll to display on screen for user
+:param name:
+act the same as on card class
+:param card_type: (String) : give information what event whe get from this card
+:param value: (String/int) : give information about how handle event from card_type (get money/lose money etc)
+:param info: (String) : Information about what we roll to display on screen for user</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class TaxCart(Cart):
+<pre><code class="python">class HiddenCard(Card):
     &#34;&#34;&#34;
-            This is a class for represents HiddenCart objects - cell number 2, 7, 17, 22, 33, 36
+        This is a class for represents Hiddencard objects - cell number 2, 7, 17, 22, 33, 36
 
-            This class extends Cart class
+        This class extends card class
 
-            Attributes:
-                coordinate, name: act the same as on Cart class
-                section (String): always &#34;pay&#34;, use to check for cart type
-                amount_of_tax: (int) how much player must paid
+        Attributes:
+            coordinate, name: act the same as on card class (coordinate -1 because what hidden card we roll is random)
+            card_type (String) : give information what event whe get from this card
+            value (String/int) : give information about how handle event from card_type (get money/lose money etc)
+            info (String) : Information about what we roll to display on screen for user
+    &#34;&#34;&#34;
+    def __init__(self, name, card_type, value, info):
         &#34;&#34;&#34;
-    def __init__(self, coordinate, name, section, amount_of_tax):
-        &#34;&#34;&#34;
 
-        :param coordinate: act the same as on Cart class (can be 2 or 38)
-        :param name: act the same as on Cart class
-        :param section: (String): always &#34;pay&#34;, use to check for cart type
-        :param amount_of_tax: (int) how much player must paid
+        :param name:  act the same as on card class
+        :param card_type: (String) : give information what event whe get from this card
+        :param value: (String/int) : give information about how handle event from card_type (get money/lose money etc)
+        :param info: (String) : Information about what we roll to display on screen for user
         &#34;&#34;&#34;
-        super().__init__(coordinate, name,)
-        self.section = section
-        self.amount_of_tax = amount_of_tax
+        super().__init__(-1, name)
+        self.card_type = card_type
+        self.value = value
+        self.info = info
 
-    def stand_in_cell(self, player, board):
-        &#34;&#34;&#34;
-        The function to give information about cell that player stand after roll
-
-        :param player: (player) player who stand on this cell
-        :param board: (board) Hidden part of game board - logic part of apk
-
-        :return: 2 - player stand on tax cell
-        &#34;&#34;&#34;
-        return 2</code></pre>
+    def __str__(self):
+        return self.info</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>cart.Cart</li>
+<li>card.Card</li>
 </ul>
-<h3>Methods</h3>
-<dl>
-<dt id="tax_cart.TaxCart.stand_in_cell"><code class="name flex">
-<span>def <span class="ident">stand_in_cell</span></span>(<span>self, player, board)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>The function to give information about cell that player stand after roll</p>
-<p>:param player: (player) player who stand on this cell
-:param board: (board) Hidden part of game board - logic part of apk</p>
-<p>:return: 2 - player stand on tax cell</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def stand_in_cell(self, player, board):
-    &#34;&#34;&#34;
-    The function to give information about cell that player stand after roll
-
-    :param player: (player) player who stand on this cell
-    :param board: (board) Hidden part of game board - logic part of apk
-
-    :return: 2 - player stand on tax cell
-    &#34;&#34;&#34;
-    return 2</code></pre>
-</details>
-</dd>
-</dl>
 </dd>
 </dl>
 </section>
@@ -173,10 +134,7 @@ class TaxCart(Cart):
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="tax_cart.TaxCart" href="#tax_cart.TaxCart">TaxCart</a></code></h4>
-<ul class="">
-<li><code><a title="tax_cart.TaxCart.stand_in_cell" href="#tax_cart.TaxCart.stand_in_cell">stand_in_cell</a></code></li>
-</ul>
+<h4><code><a title="hidden_card.HiddenCard" href="#hidden_card.HiddenCard">HiddenCard</a></code></h4>
 </li>
 </ul>
 </li>

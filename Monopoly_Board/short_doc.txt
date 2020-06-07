@@ -1,0 +1,62 @@
+"""
+Short documentation of my project
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+How to start playing:
+
+First, you must install the pygame from https://www.pygame.org/wiki/GettingStarted 
+
+Then you need to run game_loop.py and it’s all ready - now you can have fun playing
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+About project:
+
+This is game named "monopoly" in which can play between 2 and 4 players. When only one player stay in game, he is the winner and the game is over. 
+At the beginning users have to choose number of players. Then they can play on game board where all the magic is happening. In main screen in the middle players have 5 buttons, and on the sides they have 40 cells. If user click on cell, he can view it. 
+
+Now I will describe this 5 buttons which are in the middle.
+1. Roll the dice -> in each turn player must click on it to make a move. 
+When player click on the button "roll the dice" it will display to him how many moves he can make. If player will throw a pair, he has extra move. When player can't make move the button is inactive
+
+2. End turn -> If player cannot move, and he do not want to do anything else in his turn, he can end his turn by clicking on button "end turn". 
+If player has a move to do, but he will click this button, the game will show statement in which will say "you must roll the dice first"             
+
+3. My properties -> when player will click on it, he will see all his bought cells
+
+4. Other players properties -> When player click on it, he can see the other players properties, the cells he bought, but first he have to choose which players properties he wants to check    
+
+5. Buy/Sell –>
+First the player have to choose if he want to buy or sell, then he have to choose if he want to buy/sell from/to player or if he want to buy/sell from/to bank. 
+
+Next if he want to trade with bank he have to choose what he want to buy/sell. The price of selling to bank is fixed in advance. 
+
+If player want to trade with other player, he must choose what he want to buy/sell and enter his offer and accept it with "enter" on keyboard            
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Some informations about classes in project:
+
+- banker: This class is used to create all 40 card object from csv file
+- board: This class is used to represent hidden part of board logic (model in mvc)
+- board_avatar: This class is used to represent player's avatar in user's screen
+- Buyer: This class is used to handle event that happened when player choose the „buy” button
+- card: This is parent class of all specific cards type like city card etc
+- city_card/hidden_card/power_station_card/tax_card/transport_card: This class extends card class, represent specific type of cards
+- game_loop: This is main class where game starts (place with game loop)
+- hidden_card_reader: This class is used to create all hidden cards from csv file
+- player: This class is used to represent hidden part of player logic (behind avatar)
+- Seller: This class is used to handle event that happened when player choose the „sell” button
+- Tradesman: This class is used to handle event that happened when player choose the „buy/sell” button - depends on what user choose creates Buyer or Seller object
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Some information about design patterns in project
+
+Model-View-Controller - This design pattern is the most important in this project 
+The view is the part that the user sees on the screen, if he clicks on something, the part of the controller that starts the methods from class models such as board or player
+
+Builder - This design pattern is used in Banker and Hidden_Cart_Reader class because process of creating object from this class is long and depends on csv file, so it’s better to use some specific class to create this objects
+
+Adapter - This design pattern is used when players want to buy/sell something. I want to have one main class to deal with trade operations but selling and buying operations its different so I create Tradesman class that depends on option create Buyer or Seller object that can handle event
+
+Singleton (not in code - option for future) - This design pattern can be used in graphic_board/board because we only want one object of that type in our code

@@ -1,32 +1,32 @@
-from cart import Cart
+from card import Card
 
 
-class TransportCart(Cart):
+class TransportCard(Card):
     """
         This is a class for represents City objects - cell number 5, 15, 25, 35
 
-        This class extends Cart class
+        This class extends card class
 
             Attributes:
-                coordinate: act the same as on Cart class
-                name: act the same as on Cart class
-                section:(String) always transport, use to check for bonus (depends on how many transportCart owner have)
+                coordinate: act the same as on card class
+                name: act the same as on card class
+                section:(String) always transport, use to check for bonus (depends on how many transportcard owner have)
                 cost: (int) how much user must paid when he want to buy this cell
                 mortgage_value: (int) : in future can be used to use mortgage mechanic
                 value_with_houses: (dict) how much user must paid when stand on cell
-                                                with house(depends on how many transportCart owner have)
+                                                with house(depends on how many transportcard owner have)
                 owner: (player): who is owner of this cell - before buy/after sell to bank owner == None
             """
     def __init__(self, coordinate, name, section, cost, mortgage_value, value_with_houses, owner=None):
         """
 
-        :param coordinate: act the same as on Cart class
-        :param name: act the same as on Cart class
-        :param section: (String) always transport, use to check for bonus (depends on how many transportCart owner have)
+        :param coordinate: act the same as on card class
+        :param name: act the same as on card class
+        :param section: (String) always transport, use to check for bonus (depends on how many transportcard owner have)
         :param cost: (int) how much user must paid when he want to buy this cell
         :param mortgage_value: (int) : in future can be used to use mortgage mechanic
         :param value_with_houses:  (dict) how much user must paid when stand on cell
-                                                with house(depends on how many transportCart owner have)
+                                                with house(depends on how many transportcard owner have)
         :param owner: (player): who is owner of this cell - before buy/after sell to bank owner == None
         """
         super().__init__(coordinate, name,)

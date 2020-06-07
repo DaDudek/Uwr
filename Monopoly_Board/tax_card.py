@@ -1,23 +1,23 @@
-from cart import Cart
+from card import Card
 
 
-class TaxCart(Cart):
+class TaxCard(Card):
     """
-            This is a class for represents HiddenCart objects - cell number 2, 7, 17, 22, 33, 36
+            This is a class for represents Hiddencard objects - cell number 2, 7, 17, 22, 33, 36
 
-            This class extends Cart class
+            This class extends card class
 
             Attributes:
-                coordinate, name: act the same as on Cart class
-                section (String): always "pay", use to check for cart type
+                coordinate, name: act the same as on card class
+                section (String): always "pay", use to check for card type
                 amount_of_tax: (int) how much player must paid
         """
     def __init__(self, coordinate, name, section, amount_of_tax):
         """
 
-        :param coordinate: act the same as on Cart class (can be 2 or 38)
-        :param name: act the same as on Cart class
-        :param section: (String): always "pay", use to check for cart type
+        :param coordinate: act the same as on card class (can be 2 or 38)
+        :param name: act the same as on card class
+        :param section: (String): always "pay", use to check for card type
         :param amount_of_tax: (int) how much player must paid
         """
         super().__init__(coordinate, name,)

@@ -1,9 +1,9 @@
-from city_cart import CityCart
-from transport_cart import TransportCart
-from power_station_cart import PowerStationCart
-from tax_cart import TaxCart
-from cart import Cart
-from hidden_cart_reader import HiddenCartReader
+from city_card import CityCard
+from transport_card import TransportCard
+from power_station_card import PowerStationCard
+from tax_card import TaxCard
+from card import Card
+from hidden_card_reader import HiddencardReader
 
 
 class Banker:
@@ -11,22 +11,22 @@ class Banker:
         This is a class for represents PowerStation objects - cell number 12 and 28
 
            Attributes:
-               file -> csv file where are information about all hidden carts
+               file -> csv file where are information about all hidden cards
        """
     def __init__(self, file):
         """
             The constructor for Banker class
 
-                :param file: csv file where are information about all hidden carts
+                :param file: csv file where are information about all hidden cards
 
-                hidden_cart: (list) : list of hidden carts - make by HiddenCartReader object
+                hidden_card: (list) : list of hidden cards - make by HiddencardReader object
                 sector : (dict) this represent countries, key is country kind (yellow, red etc),
                                                         value is list of coordinates cell from that country
                 id : (dict) dict where key is kind of cell and value is list of coordinate where this cell can be
-                carts: list of all carts - when banker create cart he append her here
+                cards: list of all cards - when banker create card he append her here
 
             """
-        self.hidden_carts = []
+        self.hidden_cards = []
         self.file = file
         self.sector = {}  # rozmiar państwa
         self.id_cities = [1, 3, 6, 8, 9, 11, 13, 14, 16, 18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39]
@@ -37,9 +37,9 @@ class Banker:
         self.id_tax = [4, 38]
         self.id = {"cities": self.id_cities, "power_stations": self.id_power_station, "transport": self.id_transport,
                    "event": self.id_event, "hidden": self.id_hidden, "tax": self.id_tax}
-        self.carts = []
+        self.cards = []
 
-    def make_all_carts(self):
+    def make_all_cards(self):
         """
         This function is used to create all type of kind, it use some more specialist methods
 
@@ -51,34 +51,34 @@ class Banker:
                 counter += 1
                 continue
             elif counter in self.id_event:
-                self.carts.append(self.make_event_cart(line))
+                self.cards.append(self.make_event_card(line))
             elif counter in self.id_tax:
-                self.carts.append(self.make_tax_cart(line))
+                self.cards.append(self.make_tax_card(line))
             elif counter in self.id_cities:
-                self.carts.append(self.make_city_cart(line))
+                self.cards.append(self.make_city_card(line))
             elif counter in self.id_transport:
-                self.carts.append(self.make_transport_cart(line))
+                self.cards.append(self.make_transport_card(line))
             elif counter in self.id_power_station:
-                self.carts.append(self.make_power_station_cart(line))
+                self.cards.append(self.make_power_station_card(line))
             counter += 1
-        self.make_hidden_carts(open("random_carts.csv"))
+        self.make_hidden_cards(open("random_cards.csv"))
 
-    def make_hidden_carts(self, hidden_carts_file):
+    def make_hidden_cards(self, hidden_cards_file):
         """
-        This function is used to create HiddenCartReader object and use him to create all the hidden carts
+        This function is used to create HiddencardReader object and use him to create all the hidden cards
 
-        :param hidden_carts_file: csv file where are information about hidden carts
+        :param hidden_cards_file: csv file where are information about hidden cards
 
         :return: (void) -> return nothing only change object
         """
-        hidden_carts_reader = HiddenCartReader(hidden_carts_file)
-        self.hidden_carts = hidden_carts_reader.make_hidden_carts()
+        hidden_cards_reader = HiddencardReader(hidden_cards_file)
+        self.hidden_cards = hidden_cards_reader.make_hidden_cards()
 
-    def make_tax_cart(self, line):
+    def make_tax_card(self, line):
         """
-            This function is used to create tax cart from csv file
+            This function is used to create tax card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -> return nothing only change object
             """
@@ -97,14 +97,14 @@ class Banker:
             if counter == 3:
                 amount_of_tax = int(word) * 1000
             counter += 1
-        cart = TaxCart(coordinate, name, section, amount_of_tax)
-        return cart
+        card = TaxCard(coordinate, name, section, amount_of_tax)
+        return card
 
-    def make_event_cart(self, line):
+    def make_event_card(self, line):
         """
-            This function is used to create event cart from csv file
+            This function is used to create event card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -> return nothing only change object
         """
@@ -119,14 +119,14 @@ class Banker:
                 name = word
             counter += 1
 
-        cart = Cart(coordinate, name, )
-        return cart
+        card = Card(coordinate, name, )
+        return card
 
-    def make_city_cart(self, line):
+    def make_city_card(self, line):
         """
-            This function is used to create city cart from csv file
+            This function is used to create city card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -> return nothing only change object
             """
@@ -159,15 +159,15 @@ class Banker:
                 value_with_hotel = int(word[:len(word) - 1]) * 1000
             counter += 1
 
-        cart = CityCart(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
+        card = CityCard(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
                         value_with_houses, value_with_hotel, )
-        return cart
+        return card
 
-    def make_transport_cart(self, line):
+    def make_transport_card(self, line):
         """
-            This function is used to create transport cart from csv file
+            This function is used to create transport card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                  :return: (void) -> return nothing only change object
         """
@@ -194,14 +194,14 @@ class Banker:
                 value_with_houses[house_counter] = int(word) * 1000
                 house_counter += 1
             counter += 1
-        cart = TransportCart(coordinate, name, section, cost, mortgage_value, value_with_houses, )
-        return cart
+        card = TransportCard(coordinate, name, section, cost, mortgage_value, value_with_houses, )
+        return card
 
-    def make_power_station_cart(self, line):
+    def make_power_station_card(self, line):
         """
-            This function is used to create power_station cart from csv file
+            This function is used to create power_station card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -> return nothing only change object
             """
@@ -223,5 +223,5 @@ class Banker:
                 mortgage_value = int(word) * 1000
             counter += 1
 
-        cart = PowerStationCart(coordinate, name, section, cost, mortgage_value)
-        return cart
+        card = PowerStationCard(coordinate, name, section, cost, mortgage_value)
+        return card

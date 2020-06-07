@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>hidden_cart_reader API documentation</title>
+<title>hidden_card_reader API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,39 +17,39 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>hidden_cart_reader</code></h1>
+<h1 class="title">Module <code>hidden_card_reader</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from hidden_cart import HiddenCart
+<pre><code class="python">from hidden_card import HiddenCard
 
 
-class HiddenCartReader:
+class HiddencardReader:
     &#34;&#34;&#34;
-    This is a class for create hidden cart from csv file
+    This is a class for create hidden card from csv file
 
         Attributes:
-            file -&gt; csv file where are information about all hidden carts
+            file -&gt; csv file where are information about all hidden cards
     &#34;&#34;&#34;
     def __init__(self, file):
         &#34;&#34;&#34;
-        The constructor for HiddenCartReader class.
+        The constructor for HiddencardReader class.
 
-        :param file: csv file where are information about all hidden carts
+        :param file: csv file where are information about all hidden cards
 
-        list_of_hidden_cart: (list) : when reader create cart its append her here
+        list_of_hidden_card: (list) : when reader create card its append her here
         &#34;&#34;&#34;
         self.file = file
-        self.list_of_hidden_cart = []
+        self.list_of_hidden_card = []
 
-    def make_hidden_carts(self,):
+    def make_hidden_cards(self,):
         &#34;&#34;&#34;
-         The function to create all hidden carts - main function of that class
+         The function to create all hidden cards - main function of that class
 
-         This function read all lines from file, split it and create cart
+         This function read all lines from file, split it and create card
 
         :return: void -&gt; only change object
         &#34;&#34;&#34;
@@ -59,14 +59,14 @@ class HiddenCartReader:
                 line.strip()
                 counter = 0
                 name = &#34;&#34;
-                cart_type = &#34;&#34;
+                card_type = &#34;&#34;
                 value = 0
                 info = &#34;&#34;
                 for word in line.split(&#34;,&#34;):
                     if counter == 0:
                         name = word
                     elif counter == 1:
-                        cart_type = word
+                        card_type = word
                     elif counter == 2:
                         if word == &#34;transport&#34; or word == &#34;power_station&#34;:
                             value = word
@@ -78,10 +78,10 @@ class HiddenCartReader:
                     elif counter == 3:
                         info = word
                     counter += 1
-                cart = HiddenCart(name, cart_type, value, info)
-                self.list_of_hidden_cart.append(cart)
+                card = HiddenCard(name, card_type, value, info)
+                self.list_of_hidden_card.append(card)
             tmp += 1
-        return self.list_of_hidden_cart</code></pre>
+        return self.list_of_hidden_card</code></pre>
 </details>
 </section>
 <section>
@@ -93,45 +93,45 @@ class HiddenCartReader:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="hidden_cart_reader.HiddenCartReader"><code class="flex name class">
-<span>class <span class="ident">HiddenCartReader</span></span>
+<dt id="hidden_card_reader.HiddencardReader"><code class="flex name class">
+<span>class <span class="ident">HiddencardReader</span></span>
 <span>(</span><span>file)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This is a class for create hidden cart from csv file</p>
+<div class="desc"><p>This is a class for create hidden card from csv file</p>
 <pre><code>Attributes:
-    file -&gt; csv file where are information about all hidden carts
+    file -&gt; csv file where are information about all hidden cards
 </code></pre>
-<p>The constructor for HiddenCartReader class.</p>
-<p>:param file: csv file where are information about all hidden carts</p>
-<p>list_of_hidden_cart: (list) : when reader create cart its append her here</p></div>
+<p>The constructor for HiddencardReader class.</p>
+<p>:param file: csv file where are information about all hidden cards</p>
+<p>list_of_hidden_card: (list) : when reader create card its append her here</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class HiddenCartReader:
+<pre><code class="python">class HiddencardReader:
     &#34;&#34;&#34;
-    This is a class for create hidden cart from csv file
+    This is a class for create hidden card from csv file
 
         Attributes:
-            file -&gt; csv file where are information about all hidden carts
+            file -&gt; csv file where are information about all hidden cards
     &#34;&#34;&#34;
     def __init__(self, file):
         &#34;&#34;&#34;
-        The constructor for HiddenCartReader class.
+        The constructor for HiddencardReader class.
 
-        :param file: csv file where are information about all hidden carts
+        :param file: csv file where are information about all hidden cards
 
-        list_of_hidden_cart: (list) : when reader create cart its append her here
+        list_of_hidden_card: (list) : when reader create card its append her here
         &#34;&#34;&#34;
         self.file = file
-        self.list_of_hidden_cart = []
+        self.list_of_hidden_card = []
 
-    def make_hidden_carts(self,):
+    def make_hidden_cards(self,):
         &#34;&#34;&#34;
-         The function to create all hidden carts - main function of that class
+         The function to create all hidden cards - main function of that class
 
-         This function read all lines from file, split it and create cart
+         This function read all lines from file, split it and create card
 
         :return: void -&gt; only change object
         &#34;&#34;&#34;
@@ -141,14 +141,14 @@ class HiddenCartReader:
                 line.strip()
                 counter = 0
                 name = &#34;&#34;
-                cart_type = &#34;&#34;
+                card_type = &#34;&#34;
                 value = 0
                 info = &#34;&#34;
                 for word in line.split(&#34;,&#34;):
                     if counter == 0:
                         name = word
                     elif counter == 1:
-                        cart_type = word
+                        card_type = word
                     elif counter == 2:
                         if word == &#34;transport&#34; or word == &#34;power_station&#34;:
                             value = word
@@ -160,29 +160,29 @@ class HiddenCartReader:
                     elif counter == 3:
                         info = word
                     counter += 1
-                cart = HiddenCart(name, cart_type, value, info)
-                self.list_of_hidden_cart.append(cart)
+                card = HiddenCard(name, card_type, value, info)
+                self.list_of_hidden_card.append(card)
             tmp += 1
-        return self.list_of_hidden_cart</code></pre>
+        return self.list_of_hidden_card</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="hidden_cart_reader.HiddenCartReader.make_hidden_carts"><code class="name flex">
-<span>def <span class="ident">make_hidden_carts</span></span>(<span>self)</span>
+<dt id="hidden_card_reader.HiddencardReader.make_hidden_cards"><code class="name flex">
+<span>def <span class="ident">make_hidden_cards</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>The function to create all hidden carts - main function of that class</p>
-<p>This function read all lines from file, split it and create cart</p>
+<div class="desc"><p>The function to create all hidden cards - main function of that class</p>
+<p>This function read all lines from file, split it and create card</p>
 <p>:return: void -&gt; only change object</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_hidden_carts(self,):
+<pre><code class="python">def make_hidden_cards(self,):
     &#34;&#34;&#34;
-     The function to create all hidden carts - main function of that class
+     The function to create all hidden cards - main function of that class
 
-     This function read all lines from file, split it and create cart
+     This function read all lines from file, split it and create card
 
     :return: void -&gt; only change object
     &#34;&#34;&#34;
@@ -192,14 +192,14 @@ class HiddenCartReader:
             line.strip()
             counter = 0
             name = &#34;&#34;
-            cart_type = &#34;&#34;
+            card_type = &#34;&#34;
             value = 0
             info = &#34;&#34;
             for word in line.split(&#34;,&#34;):
                 if counter == 0:
                     name = word
                 elif counter == 1:
-                    cart_type = word
+                    card_type = word
                 elif counter == 2:
                     if word == &#34;transport&#34; or word == &#34;power_station&#34;:
                         value = word
@@ -211,10 +211,10 @@ class HiddenCartReader:
                 elif counter == 3:
                     info = word
                 counter += 1
-            cart = HiddenCart(name, cart_type, value, info)
-            self.list_of_hidden_cart.append(cart)
+            card = HiddenCard(name, card_type, value, info)
+            self.list_of_hidden_card.append(card)
         tmp += 1
-    return self.list_of_hidden_cart</code></pre>
+    return self.list_of_hidden_card</code></pre>
 </details>
 </dd>
 </dl>
@@ -231,9 +231,9 @@ class HiddenCartReader:
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="hidden_cart_reader.HiddenCartReader" href="#hidden_cart_reader.HiddenCartReader">HiddenCartReader</a></code></h4>
+<h4><code><a title="hidden_card_reader.HiddencardReader" href="#hidden_card_reader.HiddencardReader">HiddencardReader</a></code></h4>
 <ul class="">
-<li><code><a title="hidden_cart_reader.HiddenCartReader.make_hidden_carts" href="#hidden_cart_reader.HiddenCartReader.make_hidden_carts">make_hidden_carts</a></code></li>
+<li><code><a title="hidden_card_reader.HiddencardReader.make_hidden_cards" href="#hidden_card_reader.HiddencardReader.make_hidden_cards">make_hidden_cards</a></code></li>
 </ul>
 </li>
 </ul>

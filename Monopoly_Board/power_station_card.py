@@ -1,14 +1,14 @@
-from cart import Cart
+from card import Card
 
 
-class PowerStationCart(Cart):
+class PowerStationCard(Card):
     """
         This is a class for represents PowerStation objects - cell number 12 and 28
 
-        This class extends Cart class
+        This class extends card class
 
         Attributes:
-            coordinate, name: act the same as on Cart class
+            coordinate, name: act the same as on card class
             section (String): always power_station, use to check for bonus (when you have cell 12 and 28)
             cost (int): how much user must paid when he want to buy this cell
             mortgage_value (int) : not use in this version of game, but in future can be used to use mortgage mechanic
@@ -18,8 +18,8 @@ class PowerStationCart(Cart):
         """
         The constructor for ComplexNumber class.
 
-        :param coordinate: act the same as on Cart class
-        :param name: act the same as on Cart class
+        :param coordinate: act the same as on card class
+        :param name: act the same as on card class
         :param section: (String): always power_station, use to check for bonus (when you have cell 12 and 28)
         :param cost: (int): how much user must paid when he want to buy this cell
         :param mortgage_value: (int) : in future can be used to use mortgage mechanic

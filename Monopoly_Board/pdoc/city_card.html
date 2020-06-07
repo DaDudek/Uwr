@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>city_cart API documentation</title>
+<title>city_card API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,26 +17,26 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>city_cart</code></h1>
+<h1 class="title">Module <code>city_card</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from cart import Cart
+<pre><code class="python">from card import Card
 
 
-class CityCart(Cart):
+class CityCard(Card):
     &#34;&#34;&#34;
             This is a class for represents City objects - cell number 1, 3, 6, 8, 9, 11, 13, 14, 16,
                                                             18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39
 
-            This class extends Cart class
+            This class extends card class
 
             Attributes:
-                coordinate: act the same as on Cart class
-                name: act the same as on Cart class
+                coordinate: act the same as on card class
+                name: act the same as on card class
                 section: (String) color of cell (brown, yellow etc), used to check does the player have a state
                 cost: (int) how much user must paid when he want to buy this cell
                 house_prize: (int) how much user must paid when he want to buy a house
@@ -50,8 +50,8 @@ class CityCart(Cart):
                  value_with_houses, value_with_hotel, owner=None):
         &#34;&#34;&#34;
 
-        :param coordinate: act the same as on Cart class
-        :param name: act the same as on Cart class
+        :param coordinate: act the same as on card class
+        :param name: act the same as on card class
         :param section: (String) color of cell (brown, yellow etc), used to check does the player have a state
         :param cost: (int) how much user must paid when he want to buy this cell
         :param house_prize: (int) how much user must paid when he want to buy a house
@@ -105,20 +105,20 @@ class CityCart(Cart):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="city_cart.CityCart"><code class="flex name class">
-<span>class <span class="ident">CityCart</span></span>
+<dt id="city_card.CityCard"><code class="flex name class">
+<span>class <span class="ident">CityCard</span></span>
 <span>(</span><span>coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value, value_with_houses, value_with_hotel, owner=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This is a class for represents City objects - cell number 1, 3, 6, 8, 9, 11, 13, 14, 16,
 18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39</p>
-<p>This class extends Cart class</p>
+<p>This class extends card class</p>
 <h2 id="attributes">Attributes</h2>
 <dl>
 <dt><strong><code>coordinate</code></strong></dt>
-<dd>act the same as on Cart class</dd>
+<dd>act the same as on card class</dd>
 <dt><strong><code>name</code></strong></dt>
-<dd>act the same as on Cart class</dd>
+<dd>act the same as on card class</dd>
 <dt><strong><code>section</code></strong></dt>
 <dd>(String) color of cell (brown, yellow etc), used to check does the player have a state</dd>
 <dt><strong><code>cost</code></strong></dt>
@@ -136,8 +136,8 @@ class CityCart(Cart):
 <dt><strong><code>owner</code></strong></dt>
 <dd>(player): who is owner of this cell - before buy/after sell to bank owner == None</dd>
 </dl>
-<p>:param coordinate: act the same as on Cart class
-:param name: act the same as on Cart class
+<p>:param coordinate: act the same as on card class
+:param name: act the same as on card class
 :param section: (String) color of cell (brown, yellow etc), used to check does the player have a state
 :param cost: (int) how much user must paid when he want to buy this cell
 :param house_prize: (int) how much user must paid when he want to buy a house
@@ -150,16 +150,16 @@ class CityCart(Cart):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class CityCart(Cart):
+<pre><code class="python">class CityCard(Card):
     &#34;&#34;&#34;
             This is a class for represents City objects - cell number 1, 3, 6, 8, 9, 11, 13, 14, 16,
                                                             18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39
 
-            This class extends Cart class
+            This class extends card class
 
             Attributes:
-                coordinate: act the same as on Cart class
-                name: act the same as on Cart class
+                coordinate: act the same as on card class
+                name: act the same as on card class
                 section: (String) color of cell (brown, yellow etc), used to check does the player have a state
                 cost: (int) how much user must paid when he want to buy this cell
                 house_prize: (int) how much user must paid when he want to buy a house
@@ -173,8 +173,8 @@ class CityCart(Cart):
                  value_with_houses, value_with_hotel, owner=None):
         &#34;&#34;&#34;
 
-        :param coordinate: act the same as on Cart class
-        :param name: act the same as on Cart class
+        :param coordinate: act the same as on card class
+        :param name: act the same as on card class
         :param section: (String) color of cell (brown, yellow etc), used to check does the player have a state
         :param cost: (int) how much user must paid when he want to buy this cell
         :param house_prize: (int) how much user must paid when he want to buy a house
@@ -220,11 +220,11 @@ class CityCart(Cart):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>cart.Cart</li>
+<li>card.Card</li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="city_cart.CityCart.stand_in_cell"><code class="name flex">
+<dt id="city_card.CityCard.stand_in_cell"><code class="name flex">
 <span>def <span class="ident">stand_in_cell</span></span>(<span>self, player, board)</span>
 </code></dt>
 <dd>
@@ -274,9 +274,9 @@ class CityCart(Cart):
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="city_cart.CityCart" href="#city_cart.CityCart">CityCart</a></code></h4>
+<h4><code><a title="city_card.CityCard" href="#city_card.CityCard">CityCard</a></code></h4>
 <ul class="">
-<li><code><a title="city_cart.CityCart.stand_in_cell" href="#city_cart.CityCart.stand_in_cell">stand_in_cell</a></code></li>
+<li><code><a title="city_card.CityCard.stand_in_cell" href="#city_card.CityCard.stand_in_cell">stand_in_cell</a></code></li>
 </ul>
 </li>
 </ul>

@@ -1,16 +1,16 @@
-from cart import Cart
+from card import Card
 
 
-class CityCart(Cart):
+class CityCard(Card):
     """
             This is a class for represents City objects - cell number 1, 3, 6, 8, 9, 11, 13, 14, 16,
                                                             18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39
 
-            This class extends Cart class
+            This class extends card class
 
             Attributes:
-                coordinate: act the same as on Cart class
-                name: act the same as on Cart class
+                coordinate: act the same as on card class
+                name: act the same as on card class
                 section: (String) color of cell (brown, yellow etc), used to check does the player have a state
                 cost: (int) how much user must paid when he want to buy this cell
                 house_prize: (int) how much user must paid when he want to buy a house
@@ -24,8 +24,8 @@ class CityCart(Cart):
                  value_with_houses, value_with_hotel, owner=None):
         """
 
-        :param coordinate: act the same as on Cart class
-        :param name: act the same as on Cart class
+        :param coordinate: act the same as on card class
+        :param name: act the same as on card class
         :param section: (String) color of cell (brown, yellow etc), used to check does the player have a state
         :param cost: (int) how much user must paid when he want to buy this cell
         :param house_prize: (int) how much user must paid when he want to buy a house

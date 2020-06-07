@@ -37,12 +37,12 @@
         coordinate - (int) coordinate where player is  - between 0 and 39
         number_of_houses (int) flag to check how many house player have (for future)
         number_of_hotel (int) flag to check how many hotel player have (for future)
-        property - (list) list of cell that player have (cart objects not int)
+        property - (list) list of cell that player have (card objects not int)
         countries - (dict) key is country kind (yellow, red etc),
-                            value is list of cart objects form that country that player have
+                            value is list of card objects form that country that player have
         in_prison - (int) flag to know if the player is in prison
         prison_counter - (int) flag to know how many turn more player is in prison
-        out_of_prison - (int) flag to know that player have &#34;out of jail cart&#34; - for future
+        out_of_prison - (int) flag to know that player have &#34;out of jail card&#34; - for future
         have_pair - (boolean) flag to know that player can roll dice again
         &#34;&#34;&#34;
         self.number = 0
@@ -61,11 +61,11 @@
         board.players_queue.append(self)
         board.board[0].append(self)
 
-    def cart_out_of_prison(self):
+    def card_out_of_prison(self):
         &#34;&#34;&#34;
-        The function to return how many out_of_jail carts player have (for future)
+        The function to return how many out_of_jail cards player have (for future)
 
-        :return: (int) value of how many carts
+        :return: (int) value of how many cards
         &#34;&#34;&#34;
         return self.out_of_prison
 
@@ -79,9 +79,9 @@
         self.prison_counter = 0
         self.money -= 500 * 1000
 
-    def out_of_prison_by_cart(self):
+    def out_of_prison_by_card(self):
         &#34;&#34;&#34;
-            This function is used to go out from jail using cart (one of three option, for future)
+            This function is used to go out from jail using card (one of three option, for future)
 
             :return: void -&gt; (only change objects)
         &#34;&#34;&#34;
@@ -109,8 +109,8 @@
         &#34;&#34;&#34;
         self.number_of_houses = 0
         self.number_of_hotel = 0
-        for cart in self.property:
-            cart.owner = None
+        for card in self.property:
+            card.owner = None
         self.property = []
         self.countries = {}
         self.in_prison = False
@@ -120,13 +120,13 @@
         self.have_pair = False
         self.is_bankrupt = True
 
-    def make_trade(self, seller, cart, buyer, cost):
+    def make_trade(self, seller, card, buyer, cost):
         &#34;&#34;&#34;
         This function is used to make trade between two player - one of them pays
                                                                     to get a cell that the second one have
 
         :param seller: (player) person who is selling
-        :param cart: (cart) cell that is gonna be sell
+        :param card: (card) cell that is gonna be sell
         :param buyer: (player) player who bought cell
         :param cost: (int) how much seller get for selling the cell
 
@@ -134,29 +134,29 @@
         &#34;&#34;&#34;
         seller.money += cost
         buyer.money -= cost
-        seller.property.remove(cart)
-        buyer.property.append(cart)
-        seller.countries[cart.section].remove(cart.coordinate)
-        if cart.section in buyer.countries:
-            buyer.countries[cart.section].append(cart.coordinate)
+        seller.property.remove(card)
+        buyer.property.append(card)
+        seller.countries[card.section].remove(card.coordinate)
+        if card.section in buyer.countries:
+            buyer.countries[card.section].append(card.coordinate)
         else:
-            buyer.countries[cart.section] = [cart.coordinate]
-        cart.owner = buyer
+            buyer.countries[card.section] = [card.coordinate]
+        card.owner = buyer
 
-    def sell_to_player(self, player, cart, cost):
+    def sell_to_player(self, player, card, cost):
         &#34;&#34;&#34;
         This function first check if player can sell a cell to another player and after using make trade to do this
          # who sell, who buy, what buy, what is a prize
 
         :param player: (player) player who is gonna to buy a cell
-        :param cart: (cart) what sell is going to be sold
+        :param card: (card) what sell is going to be sold
         :param cost: (int) what is a prize for cell
 
         :return:  void -&gt; only change objects
         &#34;&#34;&#34;
-        if (cart.coordinate in [5, 15, 25, 35] or not (cart.number_of_houses or cart.number_of_hotel))\
+        if (card.coordinate in [5, 15, 25, 35] or not (card.number_of_houses or card.number_of_hotel))\
                 and player.money &gt;= cost:
-            self.make_trade(self, cart, player, cost)
+            self.make_trade(self, card, player, cost)
 
     def check_for_buying_house(self, board, cell):
         &#34;&#34;&#34;
@@ -297,7 +297,7 @@
                 queue = board.players_queue[1:]
                 board.players_queue = queue
                 board.players_queue.append(self)
-            del board.board[self.coordinate][1]  # board.board[x][0] is always cart
+            del board.board[self.coordinate][1]  # board.board[x][0] is always card
             if self.coordinate + how_many_cells &gt; 39:
                 self.money += 2000 * 1000
             board.board[(self.coordinate + how_many_cells) % 40].append(self)
@@ -352,12 +352,12 @@ coordinate - (int) coordinate where player is
 - between 0 and 39
 number_of_houses (int) flag to check how many house player have (for future)
 number_of_hotel (int) flag to check how many hotel player have (for future)
-property - (list) list of cell that player have (cart objects not int)
+property - (list) list of cell that player have (card objects not int)
 countries - (dict) key is country kind (yellow, red etc),
-value is list of cart objects form that country that player have
+value is list of card objects form that country that player have
 in_prison - (int) flag to know if the player is in prison
 prison_counter - (int) flag to know how many turn more player is in prison
-out_of_prison - (int) flag to know that player have "out of jail cart" - for future
+out_of_prison - (int) flag to know that player have "out of jail card" - for future
 have_pair - (boolean) flag to know that player can roll dice again</p></div>
 <details class="source">
 <summary>
@@ -376,12 +376,12 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         coordinate - (int) coordinate where player is  - between 0 and 39
         number_of_houses (int) flag to check how many house player have (for future)
         number_of_hotel (int) flag to check how many hotel player have (for future)
-        property - (list) list of cell that player have (cart objects not int)
+        property - (list) list of cell that player have (card objects not int)
         countries - (dict) key is country kind (yellow, red etc),
-                            value is list of cart objects form that country that player have
+                            value is list of card objects form that country that player have
         in_prison - (int) flag to know if the player is in prison
         prison_counter - (int) flag to know how many turn more player is in prison
-        out_of_prison - (int) flag to know that player have &#34;out of jail cart&#34; - for future
+        out_of_prison - (int) flag to know that player have &#34;out of jail card&#34; - for future
         have_pair - (boolean) flag to know that player can roll dice again
         &#34;&#34;&#34;
         self.number = 0
@@ -400,11 +400,11 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         board.players_queue.append(self)
         board.board[0].append(self)
 
-    def cart_out_of_prison(self):
+    def card_out_of_prison(self):
         &#34;&#34;&#34;
-        The function to return how many out_of_jail carts player have (for future)
+        The function to return how many out_of_jail cards player have (for future)
 
-        :return: (int) value of how many carts
+        :return: (int) value of how many cards
         &#34;&#34;&#34;
         return self.out_of_prison
 
@@ -418,9 +418,9 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         self.prison_counter = 0
         self.money -= 500 * 1000
 
-    def out_of_prison_by_cart(self):
+    def out_of_prison_by_card(self):
         &#34;&#34;&#34;
-            This function is used to go out from jail using cart (one of three option, for future)
+            This function is used to go out from jail using card (one of three option, for future)
 
             :return: void -&gt; (only change objects)
         &#34;&#34;&#34;
@@ -448,8 +448,8 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         &#34;&#34;&#34;
         self.number_of_houses = 0
         self.number_of_hotel = 0
-        for cart in self.property:
-            cart.owner = None
+        for card in self.property:
+            card.owner = None
         self.property = []
         self.countries = {}
         self.in_prison = False
@@ -459,13 +459,13 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         self.have_pair = False
         self.is_bankrupt = True
 
-    def make_trade(self, seller, cart, buyer, cost):
+    def make_trade(self, seller, card, buyer, cost):
         &#34;&#34;&#34;
         This function is used to make trade between two player - one of them pays
                                                                     to get a cell that the second one have
 
         :param seller: (player) person who is selling
-        :param cart: (cart) cell that is gonna be sell
+        :param card: (card) cell that is gonna be sell
         :param buyer: (player) player who bought cell
         :param cost: (int) how much seller get for selling the cell
 
@@ -473,29 +473,29 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         &#34;&#34;&#34;
         seller.money += cost
         buyer.money -= cost
-        seller.property.remove(cart)
-        buyer.property.append(cart)
-        seller.countries[cart.section].remove(cart.coordinate)
-        if cart.section in buyer.countries:
-            buyer.countries[cart.section].append(cart.coordinate)
+        seller.property.remove(card)
+        buyer.property.append(card)
+        seller.countries[card.section].remove(card.coordinate)
+        if card.section in buyer.countries:
+            buyer.countries[card.section].append(card.coordinate)
         else:
-            buyer.countries[cart.section] = [cart.coordinate]
-        cart.owner = buyer
+            buyer.countries[card.section] = [card.coordinate]
+        card.owner = buyer
 
-    def sell_to_player(self, player, cart, cost):
+    def sell_to_player(self, player, card, cost):
         &#34;&#34;&#34;
         This function first check if player can sell a cell to another player and after using make trade to do this
          # who sell, who buy, what buy, what is a prize
 
         :param player: (player) player who is gonna to buy a cell
-        :param cart: (cart) what sell is going to be sold
+        :param card: (card) what sell is going to be sold
         :param cost: (int) what is a prize for cell
 
         :return:  void -&gt; only change objects
         &#34;&#34;&#34;
-        if (cart.coordinate in [5, 15, 25, 35] or not (cart.number_of_houses or cart.number_of_hotel))\
+        if (card.coordinate in [5, 15, 25, 35] or not (card.number_of_houses or card.number_of_hotel))\
                 and player.money &gt;= cost:
-            self.make_trade(self, cart, player, cost)
+            self.make_trade(self, card, player, cost)
 
     def check_for_buying_house(self, board, cell):
         &#34;&#34;&#34;
@@ -636,7 +636,7 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
                 queue = board.players_queue[1:]
                 board.players_queue = queue
                 board.players_queue.append(self)
-            del board.board[self.coordinate][1]  # board.board[x][0] is always cart
+            del board.board[self.coordinate][1]  # board.board[x][0] is always card
             if self.coordinate + how_many_cells &gt; 39:
                 self.money += 2000 * 1000
             board.board[(self.coordinate + how_many_cells) % 40].append(self)
@@ -741,21 +741,21 @@ have_pair - (boolean) flag to know that player can roll dice again</p></div>
         cell.number_of_houses += 1</code></pre>
 </details>
 </dd>
-<dt id="player.Player.cart_out_of_prison"><code class="name flex">
-<span>def <span class="ident">cart_out_of_prison</span></span>(<span>self)</span>
+<dt id="player.Player.card_out_of_prison"><code class="name flex">
+<span>def <span class="ident">card_out_of_prison</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>The function to return how many out_of_jail carts player have (for future)</p>
-<p>:return: (int) value of how many carts</p></div>
+<div class="desc"><p>The function to return how many out_of_jail cards player have (for future)</p>
+<p>:return: (int) value of how many cards</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def cart_out_of_prison(self):
+<pre><code class="python">def card_out_of_prison(self):
     &#34;&#34;&#34;
-    The function to return how many out_of_jail carts player have (for future)
+    The function to return how many out_of_jail cards player have (for future)
 
-    :return: (int) value of how many carts
+    :return: (int) value of how many cards
     &#34;&#34;&#34;
     return self.out_of_prison</code></pre>
 </details>
@@ -869,8 +869,8 @@ we also check the traspont because we use fake houses there</p>
     &#34;&#34;&#34;
     self.number_of_houses = 0
     self.number_of_hotel = 0
-    for cart in self.property:
-        cart.owner = None
+    for card in self.property:
+        card.owner = None
     self.property = []
     self.countries = {}
     self.in_prison = False
@@ -882,13 +882,13 @@ we also check the traspont because we use fake houses there</p>
 </details>
 </dd>
 <dt id="player.Player.make_trade"><code class="name flex">
-<span>def <span class="ident">make_trade</span></span>(<span>self, seller, cart, buyer, cost)</span>
+<span>def <span class="ident">make_trade</span></span>(<span>self, seller, card, buyer, cost)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This function is used to make trade between two player - one of them pays
 to get a cell that the second one have</p>
 <p>:param seller: (player) person who is selling
-:param cart: (cart) cell that is gonna be sell
+:param card: (card) cell that is gonna be sell
 :param buyer: (player) player who bought cell
 :param cost: (int) how much seller get for selling the cell</p>
 <p>:return: void -&gt; only change objects</p></div>
@@ -896,13 +896,13 @@ to get a cell that the second one have</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_trade(self, seller, cart, buyer, cost):
+<pre><code class="python">def make_trade(self, seller, card, buyer, cost):
     &#34;&#34;&#34;
     This function is used to make trade between two player - one of them pays
                                                                 to get a cell that the second one have
 
     :param seller: (player) person who is selling
-    :param cart: (cart) cell that is gonna be sell
+    :param card: (card) cell that is gonna be sell
     :param buyer: (player) player who bought cell
     :param cost: (int) how much seller get for selling the cell
 
@@ -910,14 +910,14 @@ to get a cell that the second one have</p>
     &#34;&#34;&#34;
     seller.money += cost
     buyer.money -= cost
-    seller.property.remove(cart)
-    buyer.property.append(cart)
-    seller.countries[cart.section].remove(cart.coordinate)
-    if cart.section in buyer.countries:
-        buyer.countries[cart.section].append(cart.coordinate)
+    seller.property.remove(card)
+    buyer.property.append(card)
+    seller.countries[card.section].remove(card.coordinate)
+    if card.section in buyer.countries:
+        buyer.countries[card.section].append(card.coordinate)
     else:
-        buyer.countries[cart.section] = [cart.coordinate]
-    cart.owner = buyer</code></pre>
+        buyer.countries[card.section] = [card.coordinate]
+    card.owner = buyer</code></pre>
 </details>
 </dd>
 <dt id="player.Player.move"><code class="name flex">
@@ -974,7 +974,7 @@ In the end function check is player went through the start and if its true he ge
             queue = board.players_queue[1:]
             board.players_queue = queue
             board.players_queue.append(self)
-        del board.board[self.coordinate][1]  # board.board[x][0] is always cart
+        del board.board[self.coordinate][1]  # board.board[x][0] is always card
         if self.coordinate + how_many_cells &gt; 39:
             self.money += 2000 * 1000
         board.board[(self.coordinate + how_many_cells) % 40].append(self)
@@ -984,19 +984,19 @@ In the end function check is player went through the start and if its true he ge
         return 1</code></pre>
 </details>
 </dd>
-<dt id="player.Player.out_of_prison_by_cart"><code class="name flex">
-<span>def <span class="ident">out_of_prison_by_cart</span></span>(<span>self)</span>
+<dt id="player.Player.out_of_prison_by_card"><code class="name flex">
+<span>def <span class="ident">out_of_prison_by_card</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to go out from jail using cart (one of three option, for future)</p>
+<div class="desc"><p>This function is used to go out from jail using card (one of three option, for future)</p>
 <p>:return: void -&gt; (only change objects)</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def out_of_prison_by_cart(self):
+<pre><code class="python">def out_of_prison_by_card(self):
     &#34;&#34;&#34;
-        This function is used to go out from jail using cart (one of three option, for future)
+        This function is used to go out from jail using card (one of three option, for future)
 
         :return: void -&gt; (only change objects)
     &#34;&#34;&#34;
@@ -1100,13 +1100,13 @@ In the end function check is player went through the start and if its true he ge
 </details>
 </dd>
 <dt id="player.Player.sell_to_player"><code class="name flex">
-<span>def <span class="ident">sell_to_player</span></span>(<span>self, player, cart, cost)</span>
+<span>def <span class="ident">sell_to_player</span></span>(<span>self, player, card, cost)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This function first check if player can sell a cell to another player and after using make trade to do this
 # who sell, who buy, what buy, what is a prize</p>
 <p>:param player: (player) player who is gonna to buy a cell
-:param cart: (cart) what sell is going to be sold
+:param card: (card) what sell is going to be sold
 :param cost: (int) what is a prize for cell</p>
 <p>:return:
 void -&gt; only change objects</p></div>
@@ -1114,20 +1114,20 @@ void -&gt; only change objects</p></div>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def sell_to_player(self, player, cart, cost):
+<pre><code class="python">def sell_to_player(self, player, card, cost):
     &#34;&#34;&#34;
     This function first check if player can sell a cell to another player and after using make trade to do this
      # who sell, who buy, what buy, what is a prize
 
     :param player: (player) player who is gonna to buy a cell
-    :param cart: (cart) what sell is going to be sold
+    :param card: (card) what sell is going to be sold
     :param cost: (int) what is a prize for cell
 
     :return:  void -&gt; only change objects
     &#34;&#34;&#34;
-    if (cart.coordinate in [5, 15, 25, 35] or not (cart.number_of_houses or cart.number_of_hotel))\
+    if (card.coordinate in [5, 15, 25, 35] or not (card.number_of_houses or card.number_of_hotel))\
             and player.money &gt;= cost:
-        self.make_trade(self, cart, player, cost)</code></pre>
+        self.make_trade(self, card, player, cost)</code></pre>
 </details>
 </dd>
 <dt id="player.Player.stand_in_prison"><code class="name flex">
@@ -1172,14 +1172,14 @@ void -&gt; only change objects</p></div>
 <li><code><a title="player.Player.bank_account" href="#player.Player.bank_account">bank_account</a></code></li>
 <li><code><a title="player.Player.buy_hotel" href="#player.Player.buy_hotel">buy_hotel</a></code></li>
 <li><code><a title="player.Player.buy_house" href="#player.Player.buy_house">buy_house</a></code></li>
-<li><code><a title="player.Player.cart_out_of_prison" href="#player.Player.cart_out_of_prison">cart_out_of_prison</a></code></li>
+<li><code><a title="player.Player.card_out_of_prison" href="#player.Player.card_out_of_prison">card_out_of_prison</a></code></li>
 <li><code><a title="player.Player.check_for_buying_hotel" href="#player.Player.check_for_buying_hotel">check_for_buying_hotel</a></code></li>
 <li><code><a title="player.Player.check_for_buying_house" href="#player.Player.check_for_buying_house">check_for_buying_house</a></code></li>
 <li><code><a title="player.Player.check_for_sell" href="#player.Player.check_for_sell">check_for_sell</a></code></li>
 <li><code><a title="player.Player.go_bankrupt" href="#player.Player.go_bankrupt">go_bankrupt</a></code></li>
 <li><code><a title="player.Player.make_trade" href="#player.Player.make_trade">make_trade</a></code></li>
 <li><code><a title="player.Player.move" href="#player.Player.move">move</a></code></li>
-<li><code><a title="player.Player.out_of_prison_by_cart" href="#player.Player.out_of_prison_by_cart">out_of_prison_by_cart</a></code></li>
+<li><code><a title="player.Player.out_of_prison_by_card" href="#player.Player.out_of_prison_by_card">out_of_prison_by_card</a></code></li>
 <li><code><a title="player.Player.out_of_prison_by_cash" href="#player.Player.out_of_prison_by_cash">out_of_prison_by_cash</a></code></li>
 <li><code><a title="player.Player.paid_tax" href="#player.Player.paid_tax">paid_tax</a></code></li>
 <li><code><a title="player.Player.sell_hotel" href="#player.Player.sell_hotel">sell_hotel</a></code></li>

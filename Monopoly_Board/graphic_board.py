@@ -374,7 +374,7 @@ class GraphicBoard:
     def go_to_prison_graphic(self, player, background_board):
         """
         This is function to handle graphic side of what happened when players go to prison.
-            Player have three option - can wait 2 turn, can paid 500k or use go out from jail cart
+            Player have three option - can wait 2 turn, can paid 500k or use go out from jail card
 
         :param player: (BoardAvatar) Its avatar of player
         :param background_board: hidden logic of board
@@ -384,7 +384,7 @@ class GraphicBoard:
         not_exit = 1
         self.screen.blit(pygame.image.load("graphic/in_prison.png"), (127, 127))
         self.show_message(455, 644, str(background_board.actual_player.prison_counter), 35)
-        self.show_message(525, 358, str(background_board.actual_player.cart_out_of_prison()), 35)
+        self.show_message(525, 358, str(background_board.actual_player.card_out_of_prison()), 35)
         self.show_message(527, 498, self.make_spaces(str(background_board.actual_player.money)), 35)
         pygame.display.update()
         while not_exit:
@@ -394,8 +394,8 @@ class GraphicBoard:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     cur = pygame.mouse.get_pos()
                     if 600 >= cur[0] >= 220 and 395 >= cur[1] >= 280 \
-                            and background_board.actual_player.cart_out_of_prison():
-                        background_board.actual_player.out_of_prison_by_cart()
+                            and background_board.actual_player.card_out_of_prison():
+                        background_board.actual_player.out_of_prison_by_card()
                         not_exit = 0
                         player.after_roll = 1
                     elif 600 >= cur[0] >= 220 and 531 >= cur[1] >= 416 \
@@ -889,7 +889,7 @@ class GraphicBoard:
         :param background_board: (board) hidden part of board logic
         :param x: (int) value of first dice
         :param y: (int) value of second dice
-        :param is_free: (int) option - Cart objects have function stand_in_cell that return this value
+        :param is_free: (int) option - card objects have function stand_in_cell that return this value
         :param background_player: (player) first player in queue
 
         :return: void -> only change objects and draw in screen
@@ -907,16 +907,16 @@ class GraphicBoard:
             background_player.paid_tax(background_board.board[player.cell][0].amount_of_tax)
             self.tax_cell(player, background_board)
         elif is_free == 0:
-            cart = background_board.board[player.cell][0]
-            cost = cart.check_how_much_to_paid(background_board)
-            cart.paid_for_staying(background_player, cost)
+            card = background_board.board[player.cell][0]
+            cost = card.check_how_much_to_paid(background_board)
+            card.paid_for_staying(background_player, cost)
             self.stand_on_not_your_cell(player, cost, background_board)
         elif is_free == -2:
             self.stand_on_your_cell()
         elif is_free == 3:
-            cart = background_board.board[player.cell][0]
-            cost = cart.check_how_much_to_paid(x + y)
-            cart.paid_for_staying(background_player, cost)
+            card = background_board.board[player.cell][0]
+            cost = card.check_how_much_to_paid(x + y)
+            card.paid_for_staying(background_player, cost)
             self.stand_on_not_your_cell(player, cost, background_board)
         elif is_free == 4:
             self.go_to_prison_graphic(player, background_board)
@@ -1083,7 +1083,7 @@ class GraphicBoard:
 
     def roll_dice_cell_image(self, player):
         """
-        This function is used set to draw cell cart after player roll the dice -
+        This function is used set to draw cell card after player roll the dice -
                 what image to draw depends on player.cell
 
         :param player: (boardAvatar) player avatar on board

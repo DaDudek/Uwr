@@ -24,12 +24,12 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from city_cart import CityCart
-from transport_cart import TransportCart
-from power_station_cart import PowerStationCart
-from tax_cart import TaxCart
-from cart import Cart
-from hidden_cart_reader import HiddenCartReader
+<pre><code class="python">from city_card import CityCard
+from transport_card import TransportCard
+from power_station_card import PowerStationCard
+from tax_card import TaxCard
+from card import Card
+from hidden_card_reader import HiddencardReader
 
 
 class Banker:
@@ -37,22 +37,22 @@ class Banker:
         This is a class for represents PowerStation objects - cell number 12 and 28
 
            Attributes:
-               file -&gt; csv file where are information about all hidden carts
+               file -&gt; csv file where are information about all hidden cards
        &#34;&#34;&#34;
     def __init__(self, file):
         &#34;&#34;&#34;
             The constructor for Banker class
 
-                :param file: csv file where are information about all hidden carts
+                :param file: csv file where are information about all hidden cards
 
-                hidden_cart: (list) : list of hidden carts - make by HiddenCartReader object
+                hidden_card: (list) : list of hidden cards - make by HiddencardReader object
                 sector : (dict) this represent countries, key is country kind (yellow, red etc),
                                                         value is list of coordinates cell from that country
                 id : (dict) dict where key is kind of cell and value is list of coordinate where this cell can be
-                carts: list of all carts - when banker create cart he append her here
+                cards: list of all cards - when banker create card he append her here
 
             &#34;&#34;&#34;
-        self.hidden_carts = []
+        self.hidden_cards = []
         self.file = file
         self.sector = {}  # rozmiar państwa
         self.id_cities = [1, 3, 6, 8, 9, 11, 13, 14, 16, 18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39]
@@ -63,9 +63,9 @@ class Banker:
         self.id_tax = [4, 38]
         self.id = {&#34;cities&#34;: self.id_cities, &#34;power_stations&#34;: self.id_power_station, &#34;transport&#34;: self.id_transport,
                    &#34;event&#34;: self.id_event, &#34;hidden&#34;: self.id_hidden, &#34;tax&#34;: self.id_tax}
-        self.carts = []
+        self.cards = []
 
-    def make_all_carts(self):
+    def make_all_cards(self):
         &#34;&#34;&#34;
         This function is used to create all type of kind, it use some more specialist methods
 
@@ -77,34 +77,34 @@ class Banker:
                 counter += 1
                 continue
             elif counter in self.id_event:
-                self.carts.append(self.make_event_cart(line))
+                self.cards.append(self.make_event_card(line))
             elif counter in self.id_tax:
-                self.carts.append(self.make_tax_cart(line))
+                self.cards.append(self.make_tax_card(line))
             elif counter in self.id_cities:
-                self.carts.append(self.make_city_cart(line))
+                self.cards.append(self.make_city_card(line))
             elif counter in self.id_transport:
-                self.carts.append(self.make_transport_cart(line))
+                self.cards.append(self.make_transport_card(line))
             elif counter in self.id_power_station:
-                self.carts.append(self.make_power_station_cart(line))
+                self.cards.append(self.make_power_station_card(line))
             counter += 1
-        self.make_hidden_carts(open(&#34;random_carts.csv&#34;))
+        self.make_hidden_cards(open(&#34;random_cards.csv&#34;))
 
-    def make_hidden_carts(self, hidden_carts_file):
+    def make_hidden_cards(self, hidden_cards_file):
         &#34;&#34;&#34;
-        This function is used to create HiddenCartReader object and use him to create all the hidden carts
+        This function is used to create HiddencardReader object and use him to create all the hidden cards
 
-        :param hidden_carts_file: csv file where are information about hidden carts
+        :param hidden_cards_file: csv file where are information about hidden cards
 
         :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
-        hidden_carts_reader = HiddenCartReader(hidden_carts_file)
-        self.hidden_carts = hidden_carts_reader.make_hidden_carts()
+        hidden_cards_reader = HiddencardReader(hidden_cards_file)
+        self.hidden_cards = hidden_cards_reader.make_hidden_cards()
 
-    def make_tax_cart(self, line):
+    def make_tax_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create tax cart from csv file
+            This function is used to create tax card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -123,14 +123,14 @@ class Banker:
             if counter == 3:
                 amount_of_tax = int(word) * 1000
             counter += 1
-        cart = TaxCart(coordinate, name, section, amount_of_tax)
-        return cart
+        card = TaxCard(coordinate, name, section, amount_of_tax)
+        return card
 
-    def make_event_cart(self, line):
+    def make_event_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create event cart from csv file
+            This function is used to create event card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -145,14 +145,14 @@ class Banker:
                 name = word
             counter += 1
 
-        cart = Cart(coordinate, name, )
-        return cart
+        card = Card(coordinate, name, )
+        return card
 
-    def make_city_cart(self, line):
+    def make_city_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create city cart from csv file
+            This function is used to create city card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -185,15 +185,15 @@ class Banker:
                 value_with_hotel = int(word[:len(word) - 1]) * 1000
             counter += 1
 
-        cart = CityCart(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
+        card = CityCard(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
                         value_with_houses, value_with_hotel, )
-        return cart
+        return card
 
-    def make_transport_cart(self, line):
+    def make_transport_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create transport cart from csv file
+            This function is used to create transport card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                  :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -220,14 +220,14 @@ class Banker:
                 value_with_houses[house_counter] = int(word) * 1000
                 house_counter += 1
             counter += 1
-        cart = TransportCart(coordinate, name, section, cost, mortgage_value, value_with_houses, )
-        return cart
+        card = TransportCard(coordinate, name, section, cost, mortgage_value, value_with_houses, )
+        return card
 
-    def make_power_station_cart(self, line):
+    def make_power_station_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create power_station cart from csv file
+            This function is used to create power_station card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -249,8 +249,8 @@ class Banker:
                 mortgage_value = int(word) * 1000
             counter += 1
 
-        cart = PowerStationCart(coordinate, name, section, cost, mortgage_value)
-        return cart</code></pre>
+        card = PowerStationCard(coordinate, name, section, cost, mortgage_value)
+        return card</code></pre>
 </details>
 </section>
 <section>
@@ -269,15 +269,15 @@ class Banker:
 <dd>
 <div class="desc"><p>This is a class for represents PowerStation objects - cell number 12 and 28</p>
 <p>Attributes:
-file -&gt; csv file where are information about all hidden carts</p>
+file -&gt; csv file where are information about all hidden cards</p>
 <p>The constructor for Banker class</p>
-<pre><code>:param file: csv file where are information about all hidden carts
+<pre><code>:param file: csv file where are information about all hidden cards
 
-hidden_cart: (list) : list of hidden carts - make by HiddenCartReader object
+hidden_card: (list) : list of hidden cards - make by HiddencardReader object
 sector : (dict) this represent countries, key is country kind (yellow, red etc),
                                         value is list of coordinates cell from that country
 id : (dict) dict where key is kind of cell and value is list of coordinate where this cell can be
-carts: list of all carts - when banker create cart he append her here
+cards: list of all cards - when banker create card he append her here
 </code></pre></div>
 <details class="source">
 <summary>
@@ -288,22 +288,22 @@ carts: list of all carts - when banker create cart he append her here
         This is a class for represents PowerStation objects - cell number 12 and 28
 
            Attributes:
-               file -&gt; csv file where are information about all hidden carts
+               file -&gt; csv file where are information about all hidden cards
        &#34;&#34;&#34;
     def __init__(self, file):
         &#34;&#34;&#34;
             The constructor for Banker class
 
-                :param file: csv file where are information about all hidden carts
+                :param file: csv file where are information about all hidden cards
 
-                hidden_cart: (list) : list of hidden carts - make by HiddenCartReader object
+                hidden_card: (list) : list of hidden cards - make by HiddencardReader object
                 sector : (dict) this represent countries, key is country kind (yellow, red etc),
                                                         value is list of coordinates cell from that country
                 id : (dict) dict where key is kind of cell and value is list of coordinate where this cell can be
-                carts: list of all carts - when banker create cart he append her here
+                cards: list of all cards - when banker create card he append her here
 
             &#34;&#34;&#34;
-        self.hidden_carts = []
+        self.hidden_cards = []
         self.file = file
         self.sector = {}  # rozmiar państwa
         self.id_cities = [1, 3, 6, 8, 9, 11, 13, 14, 16, 18, 19, 21, 23, 24, 26, 27, 29, 31, 32, 34, 37, 39]
@@ -314,9 +314,9 @@ carts: list of all carts - when banker create cart he append her here
         self.id_tax = [4, 38]
         self.id = {&#34;cities&#34;: self.id_cities, &#34;power_stations&#34;: self.id_power_station, &#34;transport&#34;: self.id_transport,
                    &#34;event&#34;: self.id_event, &#34;hidden&#34;: self.id_hidden, &#34;tax&#34;: self.id_tax}
-        self.carts = []
+        self.cards = []
 
-    def make_all_carts(self):
+    def make_all_cards(self):
         &#34;&#34;&#34;
         This function is used to create all type of kind, it use some more specialist methods
 
@@ -328,34 +328,34 @@ carts: list of all carts - when banker create cart he append her here
                 counter += 1
                 continue
             elif counter in self.id_event:
-                self.carts.append(self.make_event_cart(line))
+                self.cards.append(self.make_event_card(line))
             elif counter in self.id_tax:
-                self.carts.append(self.make_tax_cart(line))
+                self.cards.append(self.make_tax_card(line))
             elif counter in self.id_cities:
-                self.carts.append(self.make_city_cart(line))
+                self.cards.append(self.make_city_card(line))
             elif counter in self.id_transport:
-                self.carts.append(self.make_transport_cart(line))
+                self.cards.append(self.make_transport_card(line))
             elif counter in self.id_power_station:
-                self.carts.append(self.make_power_station_cart(line))
+                self.cards.append(self.make_power_station_card(line))
             counter += 1
-        self.make_hidden_carts(open(&#34;random_carts.csv&#34;))
+        self.make_hidden_cards(open(&#34;random_cards.csv&#34;))
 
-    def make_hidden_carts(self, hidden_carts_file):
+    def make_hidden_cards(self, hidden_cards_file):
         &#34;&#34;&#34;
-        This function is used to create HiddenCartReader object and use him to create all the hidden carts
+        This function is used to create HiddencardReader object and use him to create all the hidden cards
 
-        :param hidden_carts_file: csv file where are information about hidden carts
+        :param hidden_cards_file: csv file where are information about hidden cards
 
         :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
-        hidden_carts_reader = HiddenCartReader(hidden_carts_file)
-        self.hidden_carts = hidden_carts_reader.make_hidden_carts()
+        hidden_cards_reader = HiddencardReader(hidden_cards_file)
+        self.hidden_cards = hidden_cards_reader.make_hidden_cards()
 
-    def make_tax_cart(self, line):
+    def make_tax_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create tax cart from csv file
+            This function is used to create tax card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -374,14 +374,14 @@ carts: list of all carts - when banker create cart he append her here
             if counter == 3:
                 amount_of_tax = int(word) * 1000
             counter += 1
-        cart = TaxCart(coordinate, name, section, amount_of_tax)
-        return cart
+        card = TaxCard(coordinate, name, section, amount_of_tax)
+        return card
 
-    def make_event_cart(self, line):
+    def make_event_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create event cart from csv file
+            This function is used to create event card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -396,14 +396,14 @@ carts: list of all carts - when banker create cart he append her here
                 name = word
             counter += 1
 
-        cart = Cart(coordinate, name, )
-        return cart
+        card = Card(coordinate, name, )
+        return card
 
-    def make_city_cart(self, line):
+    def make_city_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create city cart from csv file
+            This function is used to create city card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -436,15 +436,15 @@ carts: list of all carts - when banker create cart he append her here
                 value_with_hotel = int(word[:len(word) - 1]) * 1000
             counter += 1
 
-        cart = CityCart(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
+        card = CityCard(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
                         value_with_houses, value_with_hotel, )
-        return cart
+        return card
 
-    def make_transport_cart(self, line):
+    def make_transport_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create transport cart from csv file
+            This function is used to create transport card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                  :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -471,14 +471,14 @@ carts: list of all carts - when banker create cart he append her here
                 value_with_houses[house_counter] = int(word) * 1000
                 house_counter += 1
             counter += 1
-        cart = TransportCart(coordinate, name, section, cost, mortgage_value, value_with_houses, )
-        return cart
+        card = TransportCard(coordinate, name, section, cost, mortgage_value, value_with_houses, )
+        return card
 
-    def make_power_station_cart(self, line):
+    def make_power_station_card(self, line):
         &#34;&#34;&#34;
-            This function is used to create power_station cart from csv file
+            This function is used to create power_station card from csv file
 
-                :param line : (String) line from csv file with information about one specific cart
+                :param line : (String) line from csv file with information about one specific card
 
                 :return: (void) -&gt; return nothing only change object
             &#34;&#34;&#34;
@@ -500,13 +500,13 @@ carts: list of all carts - when banker create cart he append her here
                 mortgage_value = int(word) * 1000
             counter += 1
 
-        cart = PowerStationCart(coordinate, name, section, cost, mortgage_value)
-        return cart</code></pre>
+        card = PowerStationCard(coordinate, name, section, cost, mortgage_value)
+        return card</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="banker.Banker.make_all_carts"><code class="name flex">
-<span>def <span class="ident">make_all_carts</span></span>(<span>self)</span>
+<dt id="banker.Banker.make_all_cards"><code class="name flex">
+<span>def <span class="ident">make_all_cards</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This function is used to create all type of kind, it use some more specialist methods</p>
@@ -515,7 +515,7 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_all_carts(self):
+<pre><code class="python">def make_all_cards(self):
     &#34;&#34;&#34;
     This function is used to create all type of kind, it use some more specialist methods
 
@@ -527,25 +527,25 @@ carts: list of all carts - when banker create cart he append her here
             counter += 1
             continue
         elif counter in self.id_event:
-            self.carts.append(self.make_event_cart(line))
+            self.cards.append(self.make_event_card(line))
         elif counter in self.id_tax:
-            self.carts.append(self.make_tax_cart(line))
+            self.cards.append(self.make_tax_card(line))
         elif counter in self.id_cities:
-            self.carts.append(self.make_city_cart(line))
+            self.cards.append(self.make_city_card(line))
         elif counter in self.id_transport:
-            self.carts.append(self.make_transport_cart(line))
+            self.cards.append(self.make_transport_card(line))
         elif counter in self.id_power_station:
-            self.carts.append(self.make_power_station_cart(line))
+            self.cards.append(self.make_power_station_card(line))
         counter += 1
-    self.make_hidden_carts(open(&#34;random_carts.csv&#34;))</code></pre>
+    self.make_hidden_cards(open(&#34;random_cards.csv&#34;))</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_city_cart"><code class="name flex">
-<span>def <span class="ident">make_city_cart</span></span>(<span>self, line)</span>
+<dt id="banker.Banker.make_city_card"><code class="name flex">
+<span>def <span class="ident">make_city_card</span></span>(<span>self, line)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create city cart from csv file</p>
-<pre><code>:param line : (String) line from csv file with information about one specific cart
+<div class="desc"><p>This function is used to create city card from csv file</p>
+<pre><code>:param line : (String) line from csv file with information about one specific card
 
 :return: (void) -&gt; return nothing only change object
 </code></pre></div>
@@ -553,11 +553,11 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_city_cart(self, line):
+<pre><code class="python">def make_city_card(self, line):
     &#34;&#34;&#34;
-        This function is used to create city cart from csv file
+        This function is used to create city card from csv file
 
-            :param line : (String) line from csv file with information about one specific cart
+            :param line : (String) line from csv file with information about one specific card
 
             :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -590,17 +590,17 @@ carts: list of all carts - when banker create cart he append her here
             value_with_hotel = int(word[:len(word) - 1]) * 1000
         counter += 1
 
-    cart = CityCart(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
+    card = CityCard(coordinate, name, section, cost, house_prize, hotel_prize, mortgage_value,
                     value_with_houses, value_with_hotel, )
-    return cart</code></pre>
+    return card</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_event_cart"><code class="name flex">
-<span>def <span class="ident">make_event_cart</span></span>(<span>self, line)</span>
+<dt id="banker.Banker.make_event_card"><code class="name flex">
+<span>def <span class="ident">make_event_card</span></span>(<span>self, line)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create event cart from csv file</p>
-<pre><code>:param line : (String) line from csv file with information about one specific cart
+<div class="desc"><p>This function is used to create event card from csv file</p>
+<pre><code>:param line : (String) line from csv file with information about one specific card
 
 :return: (void) -&gt; return nothing only change object
 </code></pre></div>
@@ -608,11 +608,11 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_event_cart(self, line):
+<pre><code class="python">def make_event_card(self, line):
     &#34;&#34;&#34;
-        This function is used to create event cart from csv file
+        This function is used to create event card from csv file
 
-            :param line : (String) line from csv file with information about one specific cart
+            :param line : (String) line from csv file with information about one specific card
 
             :return: (void) -&gt; return nothing only change object
     &#34;&#34;&#34;
@@ -627,39 +627,39 @@ carts: list of all carts - when banker create cart he append her here
             name = word
         counter += 1
 
-    cart = Cart(coordinate, name, )
-    return cart</code></pre>
+    card = Card(coordinate, name, )
+    return card</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_hidden_carts"><code class="name flex">
-<span>def <span class="ident">make_hidden_carts</span></span>(<span>self, hidden_carts_file)</span>
+<dt id="banker.Banker.make_hidden_cards"><code class="name flex">
+<span>def <span class="ident">make_hidden_cards</span></span>(<span>self, hidden_cards_file)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create HiddenCartReader object and use him to create all the hidden carts</p>
-<p>:param hidden_carts_file: csv file where are information about hidden carts</p>
+<div class="desc"><p>This function is used to create HiddencardReader object and use him to create all the hidden cards</p>
+<p>:param hidden_cards_file: csv file where are information about hidden cards</p>
 <p>:return: (void) -&gt; return nothing only change object</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_hidden_carts(self, hidden_carts_file):
+<pre><code class="python">def make_hidden_cards(self, hidden_cards_file):
     &#34;&#34;&#34;
-    This function is used to create HiddenCartReader object and use him to create all the hidden carts
+    This function is used to create HiddencardReader object and use him to create all the hidden cards
 
-    :param hidden_carts_file: csv file where are information about hidden carts
+    :param hidden_cards_file: csv file where are information about hidden cards
 
     :return: (void) -&gt; return nothing only change object
     &#34;&#34;&#34;
-    hidden_carts_reader = HiddenCartReader(hidden_carts_file)
-    self.hidden_carts = hidden_carts_reader.make_hidden_carts()</code></pre>
+    hidden_cards_reader = HiddencardReader(hidden_cards_file)
+    self.hidden_cards = hidden_cards_reader.make_hidden_cards()</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_power_station_cart"><code class="name flex">
-<span>def <span class="ident">make_power_station_cart</span></span>(<span>self, line)</span>
+<dt id="banker.Banker.make_power_station_card"><code class="name flex">
+<span>def <span class="ident">make_power_station_card</span></span>(<span>self, line)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create power_station cart from csv file</p>
-<pre><code>:param line : (String) line from csv file with information about one specific cart
+<div class="desc"><p>This function is used to create power_station card from csv file</p>
+<pre><code>:param line : (String) line from csv file with information about one specific card
 
 :return: (void) -&gt; return nothing only change object
 </code></pre></div>
@@ -667,11 +667,11 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_power_station_cart(self, line):
+<pre><code class="python">def make_power_station_card(self, line):
     &#34;&#34;&#34;
-        This function is used to create power_station cart from csv file
+        This function is used to create power_station card from csv file
 
-            :param line : (String) line from csv file with information about one specific cart
+            :param line : (String) line from csv file with information about one specific card
 
             :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -693,16 +693,16 @@ carts: list of all carts - when banker create cart he append her here
             mortgage_value = int(word) * 1000
         counter += 1
 
-    cart = PowerStationCart(coordinate, name, section, cost, mortgage_value)
-    return cart</code></pre>
+    card = PowerStationCard(coordinate, name, section, cost, mortgage_value)
+    return card</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_tax_cart"><code class="name flex">
-<span>def <span class="ident">make_tax_cart</span></span>(<span>self, line)</span>
+<dt id="banker.Banker.make_tax_card"><code class="name flex">
+<span>def <span class="ident">make_tax_card</span></span>(<span>self, line)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create tax cart from csv file</p>
-<pre><code>:param line : (String) line from csv file with information about one specific cart
+<div class="desc"><p>This function is used to create tax card from csv file</p>
+<pre><code>:param line : (String) line from csv file with information about one specific card
 
 :return: (void) -&gt; return nothing only change object
 </code></pre></div>
@@ -710,11 +710,11 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_tax_cart(self, line):
+<pre><code class="python">def make_tax_card(self, line):
     &#34;&#34;&#34;
-        This function is used to create tax cart from csv file
+        This function is used to create tax card from csv file
 
-            :param line : (String) line from csv file with information about one specific cart
+            :param line : (String) line from csv file with information about one specific card
 
             :return: (void) -&gt; return nothing only change object
         &#34;&#34;&#34;
@@ -733,16 +733,16 @@ carts: list of all carts - when banker create cart he append her here
         if counter == 3:
             amount_of_tax = int(word) * 1000
         counter += 1
-    cart = TaxCart(coordinate, name, section, amount_of_tax)
-    return cart</code></pre>
+    card = TaxCard(coordinate, name, section, amount_of_tax)
+    return card</code></pre>
 </details>
 </dd>
-<dt id="banker.Banker.make_transport_cart"><code class="name flex">
-<span>def <span class="ident">make_transport_cart</span></span>(<span>self, line)</span>
+<dt id="banker.Banker.make_transport_card"><code class="name flex">
+<span>def <span class="ident">make_transport_card</span></span>(<span>self, line)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This function is used to create transport cart from csv file</p>
-<pre><code>:param line : (String) line from csv file with information about one specific cart
+<div class="desc"><p>This function is used to create transport card from csv file</p>
+<pre><code>:param line : (String) line from csv file with information about one specific card
 
  :return: (void) -&gt; return nothing only change object
 </code></pre></div>
@@ -750,11 +750,11 @@ carts: list of all carts - when banker create cart he append her here
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def make_transport_cart(self, line):
+<pre><code class="python">def make_transport_card(self, line):
     &#34;&#34;&#34;
-        This function is used to create transport cart from csv file
+        This function is used to create transport card from csv file
 
-            :param line : (String) line from csv file with information about one specific cart
+            :param line : (String) line from csv file with information about one specific card
 
              :return: (void) -&gt; return nothing only change object
     &#34;&#34;&#34;
@@ -781,8 +781,8 @@ carts: list of all carts - when banker create cart he append her here
             value_with_houses[house_counter] = int(word) * 1000
             house_counter += 1
         counter += 1
-    cart = TransportCart(coordinate, name, section, cost, mortgage_value, value_with_houses, )
-    return cart</code></pre>
+    card = TransportCard(coordinate, name, section, cost, mortgage_value, value_with_houses, )
+    return card</code></pre>
 </details>
 </dd>
 </dl>
@@ -801,13 +801,13 @@ carts: list of all carts - when banker create cart he append her here
 <li>
 <h4><code><a title="banker.Banker" href="#banker.Banker">Banker</a></code></h4>
 <ul class="">
-<li><code><a title="banker.Banker.make_all_carts" href="#banker.Banker.make_all_carts">make_all_carts</a></code></li>
-<li><code><a title="banker.Banker.make_city_cart" href="#banker.Banker.make_city_cart">make_city_cart</a></code></li>
-<li><code><a title="banker.Banker.make_event_cart" href="#banker.Banker.make_event_cart">make_event_cart</a></code></li>
-<li><code><a title="banker.Banker.make_hidden_carts" href="#banker.Banker.make_hidden_carts">make_hidden_carts</a></code></li>
-<li><code><a title="banker.Banker.make_power_station_cart" href="#banker.Banker.make_power_station_cart">make_power_station_cart</a></code></li>
-<li><code><a title="banker.Banker.make_tax_cart" href="#banker.Banker.make_tax_cart">make_tax_cart</a></code></li>
-<li><code><a title="banker.Banker.make_transport_cart" href="#banker.Banker.make_transport_cart">make_transport_cart</a></code></li>
+<li><code><a title="banker.Banker.make_all_cards" href="#banker.Banker.make_all_cards">make_all_cards</a></code></li>
+<li><code><a title="banker.Banker.make_city_card" href="#banker.Banker.make_city_card">make_city_card</a></code></li>
+<li><code><a title="banker.Banker.make_event_card" href="#banker.Banker.make_event_card">make_event_card</a></code></li>
+<li><code><a title="banker.Banker.make_hidden_cards" href="#banker.Banker.make_hidden_cards">make_hidden_cards</a></code></li>
+<li><code><a title="banker.Banker.make_power_station_card" href="#banker.Banker.make_power_station_card">make_power_station_card</a></code></li>
+<li><code><a title="banker.Banker.make_tax_card" href="#banker.Banker.make_tax_card">make_tax_card</a></code></li>
+<li><code><a title="banker.Banker.make_transport_card" href="#banker.Banker.make_transport_card">make_transport_card</a></code></li>
 </ul>
 </li>
 </ul>

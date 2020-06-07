@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>cart API documentation</title>
+<title>card API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,7 +17,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>cart</code></h1>
+<h1 class="title">Module <code>card</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -27,7 +27,7 @@
 <pre><code class="python">from random import choice
 
 
-class Cart:
+class Card:
     &#34;&#34;&#34;
         This is a class for represents Cell objects - all type of cells extends this class
 
@@ -55,7 +55,7 @@ class Cart:
         &#34;&#34;&#34;
         The function to sell cell to bank, delete cell from player property and countries and give him money
 
-        :param cell: (Cart)
+        :param cell: (card)
 
         :return: void -&gt; only change objects
         &#34;&#34;&#34;
@@ -121,7 +121,7 @@ class Cart:
         :param board: (board) Hidden part of game board - logic part of apk
         :return: (int / String) 7 - if player stand on 0, 10, 20 (nothing happend then)
                  4 - if player stand on go to prison cell
-                 hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
+                 hidden card info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
         &#34;&#34;&#34;
         if player.coordinate in board.id_type_cells[&#34;hidden&#34;]:
             return self.stand_in_hidden_cell(player, board)
@@ -157,12 +157,12 @@ class Cart:
             :return: (int) 7 - if player stand on 0, 10, 20 (nothing happend then)
                         4 - if player stand on go to prison cell
                 &#34;&#34;&#34;
-        hidden_cart = choice(board.hidden)
-        if hidden_cart.cart_type == &#34;get_money&#34;:
-            player.money += hidden_cart.value
-        # elif hidden_cart.cart_type == &#34;get_out_of_prison&#34;:
+        hidden_card = choice(board.hidden)
+        if hidden_card.card_type == &#34;get_money&#34;:
+            player.money += hidden_card.value
+        # elif hidden_card.card_type == &#34;get_out_of_prison&#34;:
         #   player.out_of_prison += 1  for future
-        return hidden_cart.info</code></pre>
+        return hidden_card.info</code></pre>
 </details>
 </section>
 <section>
@@ -174,8 +174,8 @@ class Cart:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="cart.Cart"><code class="flex name class">
-<span>class <span class="ident">Cart</span></span>
+<dt id="card.Card"><code class="flex name class">
+<span>class <span class="ident">Card</span></span>
 <span>(</span><span>coordinate, name='event', number_of_houses=0, number_of_hotel=0)</span>
 </code></dt>
 <dd>
@@ -192,7 +192,7 @@ class Cart:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Cart:
+<pre><code class="python">class Card:
     &#34;&#34;&#34;
         This is a class for represents Cell objects - all type of cells extends this class
 
@@ -220,7 +220,7 @@ class Cart:
         &#34;&#34;&#34;
         The function to sell cell to bank, delete cell from player property and countries and give him money
 
-        :param cell: (Cart)
+        :param cell: (card)
 
         :return: void -&gt; only change objects
         &#34;&#34;&#34;
@@ -286,7 +286,7 @@ class Cart:
         :param board: (board) Hidden part of game board - logic part of apk
         :return: (int / String) 7 - if player stand on 0, 10, 20 (nothing happend then)
                  4 - if player stand on go to prison cell
-                 hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
+                 hidden card info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
         &#34;&#34;&#34;
         if player.coordinate in board.id_type_cells[&#34;hidden&#34;]:
             return self.stand_in_hidden_cell(player, board)
@@ -322,16 +322,16 @@ class Cart:
             :return: (int) 7 - if player stand on 0, 10, 20 (nothing happend then)
                         4 - if player stand on go to prison cell
                 &#34;&#34;&#34;
-        hidden_cart = choice(board.hidden)
-        if hidden_cart.cart_type == &#34;get_money&#34;:
-            player.money += hidden_cart.value
-        # elif hidden_cart.cart_type == &#34;get_out_of_prison&#34;:
+        hidden_card = choice(board.hidden)
+        if hidden_card.card_type == &#34;get_money&#34;:
+            player.money += hidden_card.value
+        # elif hidden_card.card_type == &#34;get_out_of_prison&#34;:
         #   player.out_of_prison += 1  for future
-        return hidden_cart.info</code></pre>
+        return hidden_card.info</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="cart.Cart.buy_cell"><code class="name flex">
+<dt id="card.Card.buy_cell"><code class="name flex">
 <span>def <span class="ident">buy_cell</span></span>(<span>self, player, cost, background_board, coordinate)</span>
 </code></dt>
 <dd>
@@ -367,7 +367,7 @@ class Cart:
         player.countries[section].append(coordinate)</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.check_how_much_to_paid"><code class="name flex">
+<dt id="card.Card.check_how_much_to_paid"><code class="name flex">
 <span>def <span class="ident">check_how_much_to_paid</span></span>(<span>self, board)</span>
 </code></dt>
 <dd>
@@ -392,7 +392,7 @@ class Cart:
         return self.value_with_houses[self.number_of_houses]</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.paid_for_staying"><code class="name flex">
+<dt id="card.Card.paid_for_staying"><code class="name flex">
 <span>def <span class="ident">paid_for_staying</span></span>(<span>self, player, cost)</span>
 </code></dt>
 <dd>
@@ -416,12 +416,12 @@ class Cart:
         player.money -= cost</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.sell_cell"><code class="name flex">
+<dt id="card.Card.sell_cell"><code class="name flex">
 <span>def <span class="ident">sell_cell</span></span>(<span>self, cell)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>The function to sell cell to bank, delete cell from player property and countries and give him money</p>
-<p>:param cell: (Cart)</p>
+<p>:param cell: (card)</p>
 <p>:return: void -&gt; only change objects</p></div>
 <details class="source">
 <summary>
@@ -431,7 +431,7 @@ class Cart:
     &#34;&#34;&#34;
     The function to sell cell to bank, delete cell from player property and countries and give him money
 
-    :param cell: (Cart)
+    :param cell: (card)
 
     :return: void -&gt; only change objects
     &#34;&#34;&#34;
@@ -443,7 +443,7 @@ class Cart:
     cell.owner = None</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.stand_in_cell"><code class="name flex">
+<dt id="card.Card.stand_in_cell"><code class="name flex">
 <span>def <span class="ident">stand_in_cell</span></span>(<span>self, player, board)</span>
 </code></dt>
 <dd>
@@ -452,7 +452,7 @@ class Cart:
 :param board: (board) Hidden part of game board - logic part of apk
 :return: (int / String) 7 - if player stand on 0, 10, 20 (nothing happend then)
 4 - if player stand on go to prison cell
-hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></div>
+hidden card info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -465,7 +465,7 @@ hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></
     :param board: (board) Hidden part of game board - logic part of apk
     :return: (int / String) 7 - if player stand on 0, 10, 20 (nothing happend then)
              4 - if player stand on go to prison cell
-             hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
+             hidden card info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)
     &#34;&#34;&#34;
     if player.coordinate in board.id_type_cells[&#34;hidden&#34;]:
         return self.stand_in_hidden_cell(player, board)
@@ -473,7 +473,7 @@ hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></
         return self.stand_in_event_cell(player, board)</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.stand_in_event_cell"><code class="name flex">
+<dt id="card.Card.stand_in_event_cell"><code class="name flex">
 <span>def <span class="ident">stand_in_event_cell</span></span>(<span>self, player, board)</span>
 </code></dt>
 <dd>
@@ -507,7 +507,7 @@ hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></
         return 4</code></pre>
 </details>
 </dd>
-<dt id="cart.Cart.stand_in_hidden_cell"><code class="name flex">
+<dt id="card.Card.stand_in_hidden_cell"><code class="name flex">
 <span>def <span class="ident">stand_in_hidden_cell</span></span>(<span>self, player, board)</span>
 </code></dt>
 <dd>
@@ -530,12 +530,12 @@ hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></
         :return: (int) 7 - if player stand on 0, 10, 20 (nothing happend then)
                     4 - if player stand on go to prison cell
             &#34;&#34;&#34;
-    hidden_cart = choice(board.hidden)
-    if hidden_cart.cart_type == &#34;get_money&#34;:
-        player.money += hidden_cart.value
-    # elif hidden_cart.cart_type == &#34;get_out_of_prison&#34;:
+    hidden_card = choice(board.hidden)
+    if hidden_card.card_type == &#34;get_money&#34;:
+        player.money += hidden_card.value
+    # elif hidden_card.card_type == &#34;get_out_of_prison&#34;:
     #   player.out_of_prison += 1  for future
-    return hidden_cart.info</code></pre>
+    return hidden_card.info</code></pre>
 </details>
 </dd>
 </dl>
@@ -552,15 +552,15 @@ hidden cart info - when player stand on hidden cell (2, 7, 17, 22, 33, 36)</p></
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="cart.Cart" href="#cart.Cart">Cart</a></code></h4>
+<h4><code><a title="card.Card" href="#card.Card">Card</a></code></h4>
 <ul class="">
-<li><code><a title="cart.Cart.buy_cell" href="#cart.Cart.buy_cell">buy_cell</a></code></li>
-<li><code><a title="cart.Cart.check_how_much_to_paid" href="#cart.Cart.check_how_much_to_paid">check_how_much_to_paid</a></code></li>
-<li><code><a title="cart.Cart.paid_for_staying" href="#cart.Cart.paid_for_staying">paid_for_staying</a></code></li>
-<li><code><a title="cart.Cart.sell_cell" href="#cart.Cart.sell_cell">sell_cell</a></code></li>
-<li><code><a title="cart.Cart.stand_in_cell" href="#cart.Cart.stand_in_cell">stand_in_cell</a></code></li>
-<li><code><a title="cart.Cart.stand_in_event_cell" href="#cart.Cart.stand_in_event_cell">stand_in_event_cell</a></code></li>
-<li><code><a title="cart.Cart.stand_in_hidden_cell" href="#cart.Cart.stand_in_hidden_cell">stand_in_hidden_cell</a></code></li>
+<li><code><a title="card.Card.buy_cell" href="#card.Card.buy_cell">buy_cell</a></code></li>
+<li><code><a title="card.Card.check_how_much_to_paid" href="#card.Card.check_how_much_to_paid">check_how_much_to_paid</a></code></li>
+<li><code><a title="card.Card.paid_for_staying" href="#card.Card.paid_for_staying">paid_for_staying</a></code></li>
+<li><code><a title="card.Card.sell_cell" href="#card.Card.sell_cell">sell_cell</a></code></li>
+<li><code><a title="card.Card.stand_in_cell" href="#card.Card.stand_in_cell">stand_in_cell</a></code></li>
+<li><code><a title="card.Card.stand_in_event_cell" href="#card.Card.stand_in_event_cell">stand_in_event_cell</a></code></li>
+<li><code><a title="card.Card.stand_in_hidden_cell" href="#card.Card.stand_in_hidden_cell">stand_in_hidden_cell</a></code></li>
 </ul>
 </li>
 </ul>
