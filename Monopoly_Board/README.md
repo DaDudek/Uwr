@@ -1,8 +1,8 @@
-# This is my version of monopoly - I create this project to pass Object-oriented programming. I code it in python using pygame.
+## This is my version of monopoly - I create this project to pass Object-oriented programming subject. I code it in python using pygame.
 
 To start this game you need install pygame and after this run a game_loop.py file
 
-#Rules of the game:
+# Rules of the game:
 * every turn player must roll the dice
 * if the player has two identical dice values, he have additional turn
 * if player has two identical dice values three turn in row he go to prison
