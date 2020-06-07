@@ -16,6 +16,12 @@ To start this game you need install pygame and after this run a game_loop.py fil
 
 # game screenshot
 ![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screenshot/free_cell.png)
+
+
 ![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screenshot/main_screen.png)
+
+
 ![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screenshot/menu.png)
+
+
 ![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screenshot/property.png)
