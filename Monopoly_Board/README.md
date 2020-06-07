@@ -13,3 +13,9 @@ To start this game you need install pygame and after this run a game_loop.py fil
 * when some player stand on other player cell must paid him
 * if cell owner is in prison, player who stand in his cell don't pay him
 * games end when only one player is not bancrupt.
+
+# game screenshot
+![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screens/free_cell.png)
+![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screens/main_screen.png)
+![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screens/menu.png)
+![](https://github.com/DaDudek/Uwr/blob/master/Monopoly_Board/screens/property.png)
