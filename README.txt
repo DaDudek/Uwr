@@ -1,1 +1,1 @@
-Poniższy githuc służy tylko do celów edukacyjnych, nie zachęcam nikogo do kopiowania rozwiązań
+Poniższy github służy tylko do celów edukacyjnych, nie zachęcam nikogo do kopiowania rozwiązań
