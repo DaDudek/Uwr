@@ -1,0 +1,20 @@
+
+.content{
+    display: inline-block;
+    padding: 0px;
+}
+ul{
+    list-style-type:none;
+    padding-left: 0px;
+
+}
+
+li{
+    border: black 1px solid;
+    text-align: center;
+    padding: 3px;
+}
+
+#value{
+    width: 600px;
+}

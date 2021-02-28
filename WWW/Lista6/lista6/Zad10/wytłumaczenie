@@ -1,0 +1,3 @@
+Przykład - filmik youtube przy braku połączenia z internetem. 
+Strona wysyła żadanie do zasobów trwające 1/2 ms do momentu przekroczenia czasu x gdy komunikuje ze nie ma połączenia z internetem
+

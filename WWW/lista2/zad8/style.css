@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+}
+
+.firstNav{
+    background-color: #262626;
+    height: 60px;
+    margin: auto;
+}
+
+.firstNav a{
+    float: left;
+    color: #b3b3b3;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.firstNav a:hover{
+    color: #f2f2f2;
+}
+
+.firstNav-right{
+    float: right;
+    font-weight: bold;
+}
+
+.logoNav{
+    background-color: #007acc;
+    height: 100px;
+    padding: 0px 0px 0px 300px;
+}
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 30px;
+
+}
+
+
+.news h4{
+    font-size: 25px;
+    font-weight: normal;
+    padding-bottom: 20px;
+}
+
+.oneNews{
+    padding: 30px 30px 30px 30px;
+    background-color: #f2f2f2;
+    margin-bottom: 30px;
+}
+
+.title{
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.moreNews{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.moreNews button{
+    background-color: #007acc;
+    color: white;
+    height: 50px;
+}
+
+.otherItems{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.itemButton{
+    background-color: gray;
+    color: white;
+    height: 30px;
+}

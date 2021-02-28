@@ -1,0 +1,21 @@
+.field{
+        width: 30%;
+		transition: width 3s;
+    }
+
+    .field:active{
+        width: 60%;
+    }
+    .field:hover{
+        width: 60%;
+    }
+	.field:focus{
+        width: 60%;
+    }
+
+
+    .submit:hover{
+        color: red;
+        text-shadow: 1px 1px blue;
+		transition: 1s;
+    }

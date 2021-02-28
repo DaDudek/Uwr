@@ -1,0 +1,42 @@
+
+.container{
+    height: 200px;
+    width: 500px;
+}
+
+.image{
+    background-color: blue;
+    width: 150px;
+    height: 200px;
+    margin: 0px;
+}
+
+.contextContainer{
+    position: relative;
+    width: 350px;
+    left: 180px;
+    top: -215px;
+    height: 200px;
+}
+
+.sale{
+    position: relative;
+    left: 198px;
+    top: -45px;
+
+}
+
+.context{
+    position: relative;
+    top: -45px;
+}
+
+.prize{
+    position: relative;
+    top: -45px;
+}
+
+.details{
+    position: relative;
+    top: -45px;
+}

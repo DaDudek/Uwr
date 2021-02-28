@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Dialog - Modal form</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="script.js"></script>
+    </head>
+<body>
+
+<div id="dialog-form" title="Create new user">
+    <p class="validateTips">All form fields are required.</p>
+
+    <form>
+        <fieldset>
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" value="Dawid" class="text ui-widget-content ui-corner-all">
+
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" value="Dudek" class="text ui-widget-content ui-corner-all">
+
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" value="Starogard Gdański" class="text ui-widget-content ui-corner-all">
+
+            <label for="postCode">Post Code</label>
+            <input type="text" name="postCode" id="postCode" value="83-200" class="text ui-widget-content ui-corner-all">
+
+            <label for="birthDate">Birth Date</label>
+            <input type="date" name="birthDate" id="birthDate" class="text ui-widget-content ui-corner-all">
+
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+<div id="dialog-confirm" title="Empty the recycle bin?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+
+
+<div id="users-contain" class="ui-widget">
+    <h1>Existing Users:</h1>
+    <table id="users" class="ui-widget ui-widget-content">
+        <thead>
+        <tr class="ui-widget-header ">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>Post Code</th>  
+            <th>Birth Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<button id="create-user">Create new user</button>
+
+
+
+</body>
+</html>

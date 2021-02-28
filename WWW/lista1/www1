@@ -1,0 +1,9 @@
+Zadanie 1 
+- zmiana title (sekcja head) sprawiła, że tytuł karty przeglądarki zmienił się na wtf
+
+-w sekcji head jest linijka
+<link type="text/css" href="/static/common-main_fc31b1de5d28c1e7e92f.css" rel="stylesheet"> - zepsucie tego sprawia, że strona się rozjeżdza oraz traci kolory
+
+-trzeba edytować <div class="container sidebar-right" id="main-content-container">
+
+

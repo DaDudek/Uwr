@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Zadanie 2</title>
+</head>
+
+<body>
+    <form>
+        <label for="marka">Marka:</label>
+        <select name="marka" id="marka" onchange="giveSelection(this.value)">
+        </select>
+        <br>
+        <label for="marka">Model:</label>
+        <select name="model" id="model">
+        </select>
+
+        <br>
+        <label for="nowa">Nowa pozycja</label>
+        <input type="text" id="nowa" name="nowa">
+        </textarea>
+
+        <br>
+        <p>Chcę dodać:</p>
+        <input type="radio" id="markaRadio" name="marka" value="marka" onclick="markaRadioCheckChange()">
+        <label for="marka">Markę</label><br>
+        <input type="radio" id="modelRadio" name="model" value="model" onclick="modelRadioCheckChange()">
+        <label for="model">Model</label><br>
+
+    </form>
+
+    <button id="dodaj" onclick="addElem()">Dodaj pozycje</button>
+    <script src="script.js" charset="utf-8"></script>
+
+</body>

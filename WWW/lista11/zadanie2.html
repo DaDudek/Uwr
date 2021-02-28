@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+var map, mapoptions;
+var selected = ""
+var pushpins = []
+var infoboxes = []
+
+const list = document.getElementById("list")
+
+function init() {
+
+    var bingkey = "<insert key>";
+
+    var loc = new Microsoft.Maps.Location(51.09431718751969, 17.039997513212228)
+    mapOptions = {
+        credentials: bingkey,
+        center: loc,
+        zoom: 9,
+        disableZooming: true,
+        mapTypeId: Microsoft.Maps.MapTypeId.road
+    }
+
+    map = new Microsoft.Maps.Map(document.getElementById("myMap"), mapOptions);
+    Microsoft.Maps.Events.addHandler(map, 'dblclick', addPushpins);
+}
+
+function addPushpins(e) {
+    if (e.targetType == "map") {
+        map.setOptions({
+            disableZooming: true
+        });
+        setTimeout(function() {
+            return map.setOptions({
+                disableZooming: false
+            });
+        });
+        
+        var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+        var locTemp = e.target.tryPixelToLocation(point);
+        var location = new Microsoft.Maps.Location(locTemp.latitude, locTemp.longitude);
+        var pin = new Microsoft.Maps.Pushpin(location, {
+            'draggable': false
+        });
+        map.entities.push(pin);
+        pushpins.push(pin)
+        
+        var node = document.createElement("LI");
+        var textnode = document.createTextNode(locTemp.latitude + "," + locTemp.longitude);
+        node.appendChild(textnode);
+        node.addEventListener("click", choose)
+        document.getElementById("list").appendChild(node);
+        
+        
+        var infobox = new Microsoft.Maps.Infobox(location, {
+            title: 'To tutaj',
+            description: '',
+            visible: false
+        });
+        infobox.setMap(map);
+        infoboxes.push(infobox)
+
+
+
+
+    }
+}
+
+function removePushin() {
+
+    var navItems = document.getElementsByTagName("li");
+    for (var i = 0; i < navItems.length; i++) {
+        if (navItems[i] == selected) {
+            map.entities.remove(pushpins[i])
+            navItems[i].parentNode.removeChild(navItems[i])
+            pushpins.splice(i, 1);
+            infoboxes[i].setOptions({
+                visible: false
+            });
+            infoboxes.splice(i, 1);
+
+        }
+    }
+}
+
+function showInfoboxes() {
+    var navItems = document.getElementsByTagName("li");
+    for (var i = 0; i < infoboxes.length; i++) {
+        infoboxes[i].setOptions({
+            visible: false
+        });
+
+    }
+    for (var i = 0; i < navItems.length; i++) {
+        if (navItems[i] == selected) {
+            console.log(infoboxes[i])
+            infoboxes[i].setOptions({
+                visible: true
+            });
+
+        }
+    }
+
+}
+
+
+function choose(e) {
+    e.target.style.color = "#ff0000"
+    selected = e.target
+    var navItems = document.getElementsByTagName("li");
+    for (var i = 0; i < navItems.length; i++) {
+        if (navItems[i] != e.target) {
+            navItems[i].style.color = "black"
+        }
+    }
+}
+   	</script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <style>
+        #myMap {
+            margin-bottom: 30px;
+        }
+        .selected {
+            color: red;
+        }
+        ul {
+            list-style-type: none;
+        }
+        .pin {
+            transition: color 1s;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+    <button id="show-button" onclick="showInfoboxes()">Pokaż</button>
+    <button id="remove-button" onclick="removePushin()">Usuń</button>
+    <ul id="list">
+    </ul>
+
+</body>
+</html>
+
+

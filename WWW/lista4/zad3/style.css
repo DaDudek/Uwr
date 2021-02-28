@@ -1,0 +1,19 @@
+#container{
+    display: flex;
+    flex-direction: column;
+}
+
+#container img{
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+}
+
+.row{
+    float: left;
+    padding: 15px;
+}
+
+#value{
+    width: 400px;
+}

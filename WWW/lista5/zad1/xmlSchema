@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="dane">
+
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="accountNumber">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:pattern value="\d{26}"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+               <xs:element name="pesel">
+                   <xs:simpleType>
+                       <xs:restriction base="xs:integer">
+                           <xs:pattern value="\d{11}" />
+                       </xs:restriction>
+                   </xs:simpleType>
+               </xs:element>
+
+                <xs:element name="birthDate">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:date">
+                            <xs:pattern value="(1[8-9]\d{2}|20[0-1]\d|2020)-(1[0-2]|0[0-9])-([0-2]\d|3[0-1])" /> <!-- YYYY-MM-DD -->
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <xs:element name="email">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".+@.+\..+" /> <!-- any char one or more , @ , any char one or more, . , any char one or more  -->
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+            </xs:sequence>
+
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="init()">
+    <div id="container">
+        <div id="adjective" class="content" >
+            <ul data-type='adjectives'>
+            </ul>
+        </div>
+
+        <div id="noun"  class="content">
+            <ul data-type='nouns'>
+
+            </ul>
+        </div>
+
+        <div id="verb" class="content">
+            <ul data-type='verbs'>
+
+            </ul>
+        </div>
+
+        <div id="rest" class="content">
+            <ul data-type='rests'>
+
+            </ul>
+        </div>
+    </div>
+    <button id="generate" onclick="generate()">Generate</button>
+    <textarea placeholder="place for generate value" id="value"></textarea>
+
+
+    <script src="jquery-3.1.1.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

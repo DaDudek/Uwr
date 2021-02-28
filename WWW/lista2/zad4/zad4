@@ -1,0 +1,23 @@
+właściwość property wyspecyfikuje rodzaj metody pozycjonowania używanej dla elementu.
+
+Mamy 5 możliwych wartości:
+- static
+- relative
+- fixed
+- absolute
+- sticky
+
+
+Static:
+
+jest to domyślna opcja, element jest zawsze pozycjonowany według normalnego ustawienia strony
+
+Relative:
+elemenet jest wtedy pozycjonowany relatywnie względem swojej normalnej pozycji. Ustawienie właśności top/bottom/right/left przesunie go względem jego normalnej pozycji. Reszta treści nie dopasuje się do powstałej dziury.
+
+fixed:
+elemenent ustawia się relatywnie względem punktu widokowego czyli obojętnie ile będziemy scrollować dany element będzie w tym samym miejscu
+
+
+absolute:
+element ustawia się relatywnie do najbliższego "spozycjonowanego" przodka, to znaczy takiego którego wartość position jest różna od static. Jeśli takiego nie ma to pozycjonuje się względem <body>

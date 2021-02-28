@@ -1,0 +1,3 @@
+Dlaczego HTTP jest bezstanowy?
+Ani serwer ani klient nie przechowuje informacji o tym jakie wcześniej były zapywania pomiedzy określonym serwerem a klientem, nie posiada stanu wewnętrznego. Oznacza to ze każde zapytanie do serwera będzie traktowane jako "nowe", wiec z punktu widzenia serwera aplikacji, niemożliwe jest powiązanie dalszego wyszukiwania z informacją o zalogowaniu użytkownika. Ale tą bezstanowość da się obejść ( obecnie przy pomocy tzw. cookies). Jednak http sam w sobie pozostaje bezstanowy.
+

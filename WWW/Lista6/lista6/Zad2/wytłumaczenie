@@ -1,0 +1,8 @@
+Plik hosts ma na celu przetłumaczenie nazw hosts na adresy IP. Kiedy otwieramy witryne internetową, wpisujemy nazwę hosta a system sprawdza ją w pliku hosts, szuka odpowiedniego adresu IP i następnie go otworzy. 
+Jeśli w pliku nie znajdzie się odpowiednia linijka to system sprawdzi serwer DNS w Internecie i odpowiednio Cie przekieruje -> dlatego ten plik nie jest domyślnie długi. 
+
+Żeby edytować plik /etc/hosts musimy mieć możliwości superusera. 
+Co można zrobić edytująć plik? M.in. zablokować dana stronę, zastąpić adresy podane przez serwer DNS, czy kontrolować dostęp do ruchu sieciowego.
+
+Z zadania obydwa adresy IP przekierowywują na tą sama strone
+
