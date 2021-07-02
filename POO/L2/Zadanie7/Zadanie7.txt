@@ -1,0 +1,41 @@
+public class Student{
+    public void getCourses(){
+    }
+    
+    
+}
+
+public class UsosWebPage{
+    GradeController g;
+    PageLayout pageLayout;
+    public void show(){
+        pageLayout = g.getStudentGradeInfo();
+    };
+    
+}
+
+public class GradeController{
+    Mark mark;
+    
+    public PageLayout getStudentGradeInfo(){
+        student.getCourses();
+        for(course: Course){
+            mark = course.getMark(student);
+        }
+        return PageLayout
+    }
+
+}
+
+public class Course{
+
+    public Mark getMark(Student){
+        this.getValue();
+    }
+
+    public void getValue(){
+        }
+}
+
+
+Diagram nie pozwala na jednoznaczne napisanie kodu - cała logika funkcji jest przed nami ukryta, widzimy jedynie ich wywołania. Wydaje mi się też, że nie znamy budowy obiektów
